@@ -1,0 +1,47 @@
+# Referencia local — nunca publicar
+.local-reference/
+
+# Archivos comprimidos
+*.zip
+*.tar.gz
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Variables de entorno
+.env
+.env.*
+.env.local
+.env.production
+
+# Dependencias (por si se agregan en el futuro)
+node_modules/
+
+# Builds y dist
+dist/
+build/
+.cache/
+
+# Obsidian — vault Chef Scrapbook AI
+Chef Scrapbook AI/.obsidian/workspace.json
+Chef Scrapbook AI/.obsidian/workspace-mobile.json
+Chef Scrapbook AI/.obsidian/cache/
+Chef Scrapbook AI/.trash/
+
+# Python — cachés y compilados
+__pycache__/
+*.py[cod]
+
+# Scripts de construccion del vault (artefactos temporales)
+Chef Scrapbook AI/.build_vault.py
+Chef Scrapbook AI/.build_vault_fixed.py
+Chef Scrapbook AI/.fix_build.py

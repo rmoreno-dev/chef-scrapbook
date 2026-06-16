@@ -1,0 +1,186 @@
+/* ================================================================
+   CHEF SCRAPBOOK — VANILLA INK OBSIDIAN SNIPPET
+   Sistema cromático y tipográfico del vault
+   Versión: 1.0.0 | Manual de Marca v3.1
+   ================================================================ */
+
+:root {
+  --cs-vanilla:    #FAF5EC;
+  --cs-almond:     #E4D5C3;
+  --cs-ink:        #253245;
+  --cs-cloud:      #A8B0BA;
+  --cs-mauve:      #A68E98;
+  --cs-sage:       #D4DDD0;
+  --cs-success:    #5D8A62;
+  --cs-warning:    #C28A45;
+  --cs-error:      #B85C5C;
+  --cs-info:       #607A9B;
+  --cs-ink-light:  #4A5A72;
+  --cs-white:      #FFFFFF;
+  --cs-mauve-tint: #EDE4E7;
+  --cs-sage-tint:  #EBF0E9;
+}
+
+/* ── FONDO Y SUPERFICIES ────────────────────────────────────── */
+.theme-light body,
+.theme-light .mod-root {
+  background-color: var(--cs-vanilla);
+  color: var(--cs-ink);
+}
+
+.theme-light .workspace-leaf-content,
+.theme-light .markdown-preview-view,
+.theme-light .markdown-source-view {
+  background-color: var(--cs-vanilla);
+  color: var(--cs-ink);
+}
+
+/* ── TIPOGRAFÍAS (fallbacks, no carga desde red) ────────────── */
+.markdown-preview-view h1,
+.markdown-preview-view h2 {
+  font-family: 'Prata', Georgia, 'Times New Roman', serif;
+  color: var(--cs-ink);
+  letter-spacing: -0.01em;
+}
+
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+  font-family: 'Mulish', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  color: var(--cs-ink);
+}
+
+.markdown-preview-view p,
+.markdown-preview-view li,
+.markdown-preview-view td,
+.markdown-preview-view th {
+  font-family: 'Mulish', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--cs-ink);
+}
+
+/* Great Vibes solo mediante clase explícita — no aplicar automáticamente */
+.great-vibes { font-family: 'Great Vibes', cursive; }
+
+/* ── HEADINGS ───────────────────────────────────────────────── */
+.markdown-preview-view h1 {
+  font-size: 32px;
+  border-bottom: 2px solid var(--cs-almond);
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+}
+.markdown-preview-view h2 {
+  font-size: 24px;
+  border-bottom: 1px solid var(--cs-almond);
+  padding-bottom: 4px;
+  margin-bottom: 16px;
+}
+.markdown-preview-view h3 { font-size: 18px; margin-bottom: 12px; }
+
+/* ── ENLACES ────────────────────────────────────────────────── */
+.markdown-preview-view a,
+.markdown-preview-view a.internal-link {
+  color: var(--cs-mauve);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms;
+}
+.markdown-preview-view a:hover,
+.markdown-preview-view a.internal-link:hover {
+  border-bottom-color: var(--cs-mauve);
+}
+
+/* ── TABLAS ─────────────────────────────────────────────────── */
+.markdown-preview-view table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid var(--cs-almond);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.markdown-preview-view th {
+  background-color: var(--cs-almond);
+  color: var(--cs-ink);
+  font-weight: 700;
+  padding: 10px 12px;
+  text-align: left;
+}
+.markdown-preview-view td {
+  padding: 8px 12px;
+  border-top: 1px solid var(--cs-almond);
+}
+.markdown-preview-view tr:hover td { background-color: var(--cs-sage-tint); }
+
+/* ── CÓDIGO ─────────────────────────────────────────────────── */
+.markdown-preview-view code {
+  background-color: var(--cs-almond);
+  color: var(--cs-ink);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.markdown-preview-view pre {
+  background-color: #EDE9E0;
+  border: 1px solid var(--cs-almond);
+  border-radius: 8px;
+  padding: 16px;
+}
+.markdown-preview-view pre code { background: none; padding: 0; }
+
+/* ── CALLOUTS ───────────────────────────────────────────────── */
+.callout[data-callout="important"] { --callout-color: 37, 50, 69; }
+.callout[data-callout="warning"]   { --callout-color: 194, 138, 69; }
+.callout[data-callout="info"]      { --callout-color: 96, 122, 155; }
+.callout[data-callout="note"]      { --callout-color: 166, 142, 152; }
+
+/* ── BLOCKQUOTE ─────────────────────────────────────────────── */
+.markdown-preview-view blockquote {
+  border-left: 3px solid var(--cs-mauve);
+  background-color: var(--cs-mauve-tint);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  color: var(--cs-ink-light);
+}
+
+/* ── TAGS ───────────────────────────────────────────────────── */
+.tag {
+  background-color: var(--cs-sage-tint);
+  color: var(--cs-ink-light);
+  border: 1px solid var(--cs-sage);
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+/* ── FOCUS VISIBLE ──────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--cs-mauve);
+  outline-offset: 2px;
+}
+
+/* ── DARK MODE ──────────────────────────────────────────────── */
+.theme-dark body,
+.theme-dark .mod-root {
+  background-color: var(--cs-ink);
+  color: var(--cs-vanilla);
+}
+.theme-dark .markdown-preview-view h1,
+.theme-dark .markdown-preview-view h2,
+.theme-dark .markdown-preview-view h3,
+.theme-dark .markdown-preview-view p,
+.theme-dark .markdown-preview-view li,
+.theme-dark .markdown-preview-view td {
+  color: var(--cs-vanilla);
+}
+.theme-dark .markdown-preview-view th {
+  background-color: #1A2535;
+  color: var(--cs-almond);
+}
+.theme-dark .markdown-preview-view td { border-top-color: #2E3F56; }
+.theme-dark .markdown-preview-view code { background-color: #1A2535; color: var(--cs-almond); }
+.theme-dark .markdown-preview-view a { color: var(--cs-mauve); }
+.theme-dark .tag { background-color: #1A2535; border-color: #2E3F56; color: var(--cs-cloud); }

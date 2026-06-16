@@ -1,0 +1,12 @@
+﻿{
+  "defaultViewMode": "preview",
+  "foldHeading": false,
+  "spellcheck": false,
+  "spellcheckLanguages": ["es"],
+  "strictLineBreaks": false,
+  "showLineNumber": false,
+  "readableLineLength": true,
+  "showFrontmatter": false,
+  "tabSize": 2,
+  "useTab": false
+}

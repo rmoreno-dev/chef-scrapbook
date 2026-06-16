@@ -1,0 +1,105 @@
+# ASSET SOURCES — Chef Scrapbook
+
+Registro de todos los activos del proyecto: activos propios, activos externos activos
+y registro histórico de activos eliminados.
+
+---
+
+## Ilustraciones propias (SVG locales)
+
+Activos vectoriales creados específicamente para Chef Scrapbook. Sin dependencias externas.
+Aptos para publicación.
+
+### A. Avatar de perfil
+
+| Campo                    | Detalle |
+|--------------------------|---------|
+| **Archivo**              | `assets/images/chef-avatar.svg` |
+| **Propósito**            | Avatar circular del sidebar — identidad visual del perfil |
+| **Origen**               | Creado específicamente para Chef Scrapbook |
+| **Autoría**              | Proyecto Chef Scrapbook |
+| **Dependencia externa**  | Ninguna |
+| **Licencia**             | Propietaria — mismo titular que el proyecto |
+| **Paleta**               | Sistema Vanilla Ink (#FAF5EC, #E4D5C3, #C8B49F, #A68E98, #A8B0BA, #253245) |
+| **Aptitud publicación**  | Apto ✓ |
+
+### B. Ilustración de galletas
+
+| Campo                    | Detalle |
+|--------------------------|---------|
+| **Archivo**              | `assets/images/chocolate-chip-cookies.svg` |
+| **Propósito**            | Imagen polaroid de la columna derecha — ilustra el batch de galletas |
+| **Origen**               | Creado específicamente para Chef Scrapbook |
+| **Autoría**              | Proyecto Chef Scrapbook |
+| **Dependencia externa**  | Ninguna |
+| **Licencia**             | Propietaria — mismo titular que el proyecto |
+| **Paleta**               | Sistema Vanilla Ink (#FAF5EC, #E4D5C3, #C8B49F, #A8B0BA, #253245) |
+| **Aptitud publicación**  | Apto ✓ |
+
+---
+
+## Imágenes externas eliminadas (registro histórico)
+
+Las siguientes imágenes fueron utilizadas provisionalmente durante el desarrollo local
+y eliminadas antes de cualquier publicación pública. **Nunca se publicaron.**
+Se conserva el registro con fines de trazabilidad.
+
+### 1. Foto de perfil — Chef portrait *(REEMPLAZADA)*
+
+| Campo             | Detalle |
+|-------------------|---------|
+| **Tipo**          | Imagen rasterizada (JPEG) — URL externa |
+| **URL original**  | `https://lh3.googleusercontent.com/aida-public/AB6AXuAflpxF4kQ...` |
+| **Utilizada en**  | `index.html` → sidebar, avatar del perfil |
+| **Licencia**      | Desconocida — imagen generada por Google AI Studio (AIDA public) |
+| **Estado**        | **REEMPLAZADA** — eliminada de todos los archivos activos del proyecto |
+| **No publicada**  | La URL nunca estuvo presente en ningún commit ni despliegue público |
+| **Sustituida por** | `assets/images/chef-avatar.svg` |
+
+### 2. Foto de galletas — Cookie batch *(REEMPLAZADA)*
+
+| Campo             | Detalle |
+|-------------------|---------|
+| **Tipo**          | Imagen rasterizada (JPEG) — URL externa |
+| **URL original**  | `https://lh3.googleusercontent.com/aida-public/AB6AXuAHjPEOS0L...` |
+| **Utilizada en**  | `index.html` → sección polaroid (columna derecha) |
+| **Licencia**      | Desconocida — imagen generada por Google AI Studio (AIDA public) |
+| **Estado**        | **REEMPLAZADA** — eliminada de todos los archivos activos del proyecto |
+| **No publicada**  | La URL nunca estuvo presente en ningún commit ni despliegue público |
+| **Sustituida por** | `assets/images/chocolate-chip-cookies.svg` |
+
+---
+
+## Tipografías (Google Fonts — SIL Open Font License)
+
+Todas las fuentes se cargan desde Google Fonts CDN y están disponibles bajo la
+**SIL Open Font License 1.1**, que permite uso en proyectos comerciales y personales.
+
+| Fuente          | Uso en el proyecto                          | URL |
+|-----------------|---------------------------------------------|-----|
+| **Prata**       | Títulos editoriales y encabezados           | https://fonts.google.com/specimen/Prata |
+| **Mulish**      | Cuerpo de texto, tablas, formularios, UI    | https://fonts.google.com/specimen/Mulish |
+| **Great Vibes** | Captions decorativos y acentos manuscritos  | https://fonts.google.com/specimen/Great+Vibes |
+
+---
+
+## Iconos — Material Symbols Outlined (Google)
+
+| Campo             | Detalle |
+|-------------------|---------|
+| **Proveedor**     | Google Fonts / Material Design |
+| **Licencia**      | Apache License 2.0 |
+| **URL**           | `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...` |
+| **Íconos usados** | `account_circle`, `dashboard`, `science`, `biotech`, `bar_chart`, `list_alt`, `play_arrow` |
+| **Estado**        | Licencia comercial libre ✓ |
+
+---
+
+## Notas generales
+
+- Las URLs de `lh3.googleusercontent.com` fueron eliminadas del proyecto antes de cualquier
+  publicación. No existe ninguna referencia activa a ese dominio en los archivos del proyecto.
+- Los dominios de Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) requieren
+  conexión a internet para cargarse. Para uso offline, descargar las fuentes y
+  alojarlas localmente en `assets/fonts/`.
+- Los SVG propios no contienen scripts, imágenes embebidas, URLs remotas ni datos base64.
