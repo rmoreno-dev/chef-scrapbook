@@ -83,7 +83,7 @@ Todas las fuentes se cargan desde Google Fonts CDN y están disponibles bajo la
 
 ---
 
-## Iconos — Material Symbols Outlined (Google)
+## Iconos — Material Symbols Outlined (Google) *(ELIMINADO en v0.2.0)*
 
 | Campo             | Detalle |
 |-------------------|---------|
@@ -91,7 +91,64 @@ Todas las fuentes se cargan desde Google Fonts CDN y están disponibles bajo la
 | **Licencia**      | Apache License 2.0 |
 | **URL**           | `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...` |
 | **Íconos usados** | `account_circle`, `dashboard`, `science`, `biotech`, `bar_chart`, `list_alt`, `play_arrow` |
-| **Estado**        | Licencia comercial libre ✓ |
+| **Estado**        | **ELIMINADO** — reemplazado por el kit SVG propio de marca en v0.2.0. Sin referencias activas en el proyecto. |
+
+---
+
+---
+
+## Íconos del kit de marca (SVG propios — Vanilla Ink)
+
+Íconos vectoriales del sistema de marca oficial. Copiados de `.local-reference/brand-manual-v3.1/assets/svg/` a `assets/icons/`. Nunca deben referenciar URLs externas.
+
+| Archivo              | Propósito en el proyecto                     |
+|----------------------|----------------------------------------------|
+| `home.svg`           | Ítem de navegación — Inicio                  |
+| `recipe.svg`         | Ítem de navegación — Recetas                 |
+| `calendar.svg`       | Ítem de navegación — Menús; cards de menú    |
+| `heart.svg`          | Botón de favorito en tarjetas de receta      |
+| `search.svg`         | Barra de búsqueda de recetas                 |
+| `clock.svg`          | Meta-dato de tiempo en tarjetas              |
+| `filter.svg`         | Filtro avanzado (reservado)                  |
+| `check.svg`          | Título sección "Cocina del Domingo"          |
+| `plus.svg`           | Botones de agregar en listas                 |
+| `leaf.svg`           | Tarjetas "próximamente"                      |
+| `sparkle.svg`        | Sección "Novedades" en home                  |
+| `ingredients.svg`    | Encabezado tabla ingredientes; lista compras |
+| `bowl.svg`           | Reservado para futuras vistas                |
+| `whisk.svg`          | Encabezado sección Método                    |
+| `journal.svg`        | Card menús guardados                         |
+| `servings.svg`       | Meta-dato de porciones en tarjetas           |
+| `scale.svg`          | Card novedades — calculadora de porciones    |
+| `menu-icon.svg`      | Reservado para menú contextual               |
+
+**Aptitud publicación:** Apto ✓ (sin referencias externas)
+
+---
+
+## Activos de branding (SVG propios)
+
+Copiados de `.local-reference/brand-manual-v3.1/assets/svg/` a `assets/branding/`.
+
+| Archivo                  | Propósito en el proyecto                   |
+|--------------------------|--------------------------------------------|
+| `brand-stamp.svg`        | Sello circular del sidebar y hero de Inicio |
+| `botanical-divider.svg`  | Divisores decorativos (reservado)          |
+| `botanical-sprigs.svg`   | Decoración editorial (reservado)           |
+| `torn-paper.svg`         | Efecto borde rasgado (reservado)           |
+
+**Aptitud publicación:** Apto ✓
+
+---
+
+## Favicon
+
+| Campo                   | Detalle |
+|-------------------------|---------|
+| **Archivo**             | `assets/images/favicon.svg` |
+| **Propósito**           | Favicon SVG del sitio — isotipo cat chef |
+| **Origen**              | Creado para Chef Scrapbook basado en el concepto de marca aprobado (`favicon_256.png` en `.local-reference`) |
+| **Aptitud publicación** | Apto ✓ |
 
 ---
 

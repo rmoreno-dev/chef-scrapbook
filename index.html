@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chef Scrapbook — Galletas de Chispas</title>
-  <meta name="description" content="Fórmula de Galletas de Chispas v3.2 con calculadora de porciones. Chef Scrapbook — cuaderno de fórmulas culinarias." />
+  <title>Chef Scrapbook — Inicio</title>
+  <meta name="description" content="Chef Scrapbook: tu cuaderno de fórmulas culinarias. Recetas, calculadora de porciones y planificador de menú semanal." />
   <meta name="author" content="Rodolfo Moreno" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
 
   <!-- Google Fonts: Sistema Vanilla Ink -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,22 +18,18 @@
     rel="stylesheet"
   />
 
-  <!-- Material Symbols (iconos de navegación) -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-    rel="stylesheet"
-  />
-
   <!-- Estilos -->
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
 </head>
 <body>
 
-  <!-- Saltar al contenido principal (accesibilidad) -->
+  <!-- Saltar al contenido (accesibilidad) -->
   <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
 
-  <!-- Región live para lectores de pantalla (calculadora) -->
+  <!-- Región live para la calculadora (lectores de pantalla) -->
   <div
     id="calc-live"
     aria-live="polite"
@@ -38,329 +37,116 @@
     class="sr-only"
   ></div>
 
+  <!-- Contenedor de toasts -->
+  <div id="toast-container" aria-live="assertive" hidden></div>
+
+  <!-- ══════════════════════════════════════
+       OVERLAY MÓVIL (cierra el sidebar)
+  ══════════════════════════════════════ -->
+  <div id="nav-overlay" hidden aria-hidden="true"></div>
+
   <!-- ══════════════════════════════════════
        CABECERA MÓVIL
   ══════════════════════════════════════ -->
   <header class="mobile-header" role="banner">
-    <span class="mobile-header__brand">Culinary Journal</span>
-    <button class="mobile-header__btn" type="button" aria-label="Perfil de usuario">
-      <span class="material-symbols-outlined" aria-hidden="true">account_circle</span>
+    <a class="mobile-header__brand" href="#/inicio" aria-label="Chef Scrapbook — Inicio">
+      <img src="assets/images/favicon.svg" alt="" width="28" height="28" />
+      Chef Scrapbook
+    </a>
+    <button
+      class="mobile-header__btn"
+      id="nav-toggle"
+      type="button"
+      aria-label="Abrir navegación"
+      aria-expanded="false"
+      aria-controls="sidebar"
+    >
+      ☰
     </button>
   </header>
 
   <div class="layout">
 
     <!-- ══════════════════════════════════════
-         SIDEBAR — NAVEGACIÓN ESCRITORIO
+         SIDEBAR — NAVEGACIÓN
     ══════════════════════════════════════ -->
-    <nav class="sidebar" aria-label="Navegación principal">
+    <nav class="sidebar" id="sidebar" aria-label="Navegación principal">
 
       <div class="sidebar__brand">
-        <div class="sidebar__avatar">
+        <div class="sidebar__logo">
           <img
-            src="assets/images/chef-avatar.svg"
+            src="assets/images/favicon.svg"
             alt=""
             width="48"
             height="48"
           />
         </div>
         <div>
-          <p class="sidebar__name">Mi Cocina</p>
-          <p class="sidebar__tagline">Sweet &amp; Savory</p>
+          <p class="sidebar__name">Chef Scrapbook</p>
+          <p class="sidebar__tagline">Cocina · Crea · Disfruta</p>
         </div>
       </div>
 
       <div class="sidebar__nav">
         <ul class="sidebar__nav-list" role="list">
           <li>
-            <a class="sidebar__nav-link" href="#">
-              <span class="material-symbols-outlined" aria-hidden="true">dashboard</span>
-              Dashboard
+            <a
+              class="sidebar__nav-link"
+              href="#/inicio"
+              data-route="/inicio"
+            >
+              <img class="sidebar__icon" src="assets/icons/home.svg" alt="" width="20" height="20" />
+              Inicio
             </a>
           </li>
           <li>
-            <a class="sidebar__nav-link sidebar__nav-link--active" href="#" aria-current="page">
-              <span class="material-symbols-outlined" aria-hidden="true">science</span>
-              Fórmulas
+            <a
+              class="sidebar__nav-link"
+              href="#/recetas"
+              data-route="/recetas"
+            >
+              <img class="sidebar__icon" src="assets/icons/recipe.svg" alt="" width="20" height="20" />
+              Recetas
             </a>
           </li>
           <li>
-            <a class="sidebar__nav-link" href="#">
-              <span class="material-symbols-outlined" aria-hidden="true">biotech</span>
-              Laboratorio
-            </a>
-          </li>
-          <li>
-            <a class="sidebar__nav-link" href="#">
-              <span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>
-              Reportes
+            <a
+              class="sidebar__nav-link"
+              href="#/menus"
+              data-route="/menus"
+            >
+              <img class="sidebar__icon" src="assets/icons/calendar.svg" alt="" width="20" height="20" />
+              Menús
             </a>
           </li>
         </ul>
       </div>
 
+      <div class="sidebar__stamp" aria-hidden="true">
+        <img src="assets/branding/brand-stamp.svg" alt="" width="80" height="80" />
+      </div>
+
     </nav>
 
     <!-- ══════════════════════════════════════
-         CONTENIDO PRINCIPAL
+         CONTENIDO PRINCIPAL (SPA mount point)
     ══════════════════════════════════════ -->
-    <main class="main-content" id="main-content">
-
-      <!-- Cabecera de página -->
-      <div class="page-header">
-        <div class="page-header__title-wrap">
-          <h1 class="page-title">
-            Galletas de Chispas
-            <span class="sticker-excellent" aria-label="Calificación: Excellent!">Excellent!</span>
-          </h1>
-          <p class="page-header__subtitle">Versión 3.2 — Ajuste de humedad</p>
-        </div>
-
-        <div class="page-header__actions">
-          <button class="btn btn--ghost" type="button">Editar</button>
-          <button class="btn btn--primary" type="button">
-            <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span>
-            Iniciar Batch
-          </button>
-        </div>
-      </div>
-
-      <!-- Cuadrícula principal -->
-      <div class="content-grid">
-
-        <!-- ── COLUMNA IZQUIERDA ── -->
-        <div class="col-left">
-
-          <!-- SECCIÓN: Matriz de Ingredientes -->
-          <section class="paper-scrap" aria-labelledby="heading-ingredientes">
-
-            <div class="washi-tape washi-tape--top-center washi-tape--mauve" aria-hidden="true"></div>
-
-            <h2 class="section-heading" id="heading-ingredientes">
-              <span class="material-symbols-outlined" aria-hidden="true">science</span>
-              Matriz de Ingredientes
-            </h2>
-
-            <div class="table-wrapper">
-              <table
-                class="ingredient-table"
-                aria-label="Ingredientes de Galletas de Chispas — cantidades ajustables con la calculadora de porciones"
-              >
-                <thead>
-                  <tr>
-                    <th scope="col">Ingrediente</th>
-                    <th scope="col">Peso (g)</th>
-                    <th scope="col">% Panadero</th>
-                    <th scope="col">Fase</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Harina de Trigo (AP)</td>
-                    <td id="ing-harina">500g</td>
-                    <td><span class="highlighter">100.00%</span></td>
-                    <td><span class="badge badge--dry">Secos</span></td>
-                  </tr>
-                  <tr>
-                    <td>Azúcar Morena</td>
-                    <td id="ing-azucar">250g</td>
-                    <td>50.00%</td>
-                    <td><span class="badge badge--cream">Cremado</span></td>
-                  </tr>
-                  <tr>
-                    <td>Mantequilla (Sin sal)</td>
-                    <td id="ing-mantequilla">200g</td>
-                    <td>40.00%</td>
-                    <td><span class="badge badge--cream">Cremado</span></td>
-                  </tr>
-                  <tr>
-                    <td>Huevos</td>
-                    <td id="ing-huevos">100g</td>
-                    <td>20.00%</td>
-                    <td><span class="badge badge--liquid">Líquidos</span></td>
-                  </tr>
-                  <tr>
-                    <td>Chispas de Chocolate (Semi-amargo)</td>
-                    <td id="ing-chispas">300g</td>
-                    <td>60.00%</td>
-                    <td><span class="badge badge--inclusion">Inclusión</span></td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td>Total Masa</td>
-                    <td id="table-total-weight">1350g</td>
-                    <td>270.00%</td>
-                    <td></td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-
-          </section>
-
-          <!-- SECCIÓN: Método -->
-          <section class="paper-scrap paper-scrap--rotate-pos" aria-labelledby="heading-metodo">
-
-            <div class="washi-tape washi-tape--top-right washi-tape--sage" aria-hidden="true"></div>
-
-            <h2 class="section-heading section-heading--muted" id="heading-metodo">
-              <span class="material-symbols-outlined" aria-hidden="true">list_alt</span>
-              Método
-            </h2>
-
-            <ol class="method-steps" aria-label="Pasos de preparación">
-              <li class="method-step">
-                <span class="step-number step-number--1" aria-hidden="true">1</span>
-                <div class="step-text">
-                  <strong>Cremado:</strong> Batir la mantequilla a temperatura ambiente con
-                  el azúcar morena hasta que esté suave y pálida (aprox. 5 min a velocidad media).
-                </div>
-              </li>
-              <li class="method-step">
-                <span class="step-number step-number--2" aria-hidden="true">2</span>
-                <div class="step-text">
-                  <strong>Emulsión:</strong> Agregar los huevos uno por uno, asegurando que
-                  cada uno se incorpore completamente antes de añadir el siguiente.
-                </div>
-              </li>
-              <li class="method-step">
-                <span class="step-number step-number--3" aria-hidden="true">3</span>
-                <div class="step-text">
-                  <strong>Incorporación:</strong> Añadir los secos (harina) en dos partes,
-                  mezclando a velocidad baja solo hasta combinar. No sobremezclar.
-                </div>
-              </li>
-            </ol>
-
-          </section>
-
-        </div>
-
-        <!-- ── COLUMNA DERECHA ── -->
-        <div class="col-right">
-
-          <!-- TARJETA: Factor de Rendimiento + Calculadora -->
-          <div class="paper-scrap paper-scrap--rotate-neg2" aria-labelledby="heading-rendimiento">
-
-            <div class="washi-tape washi-tape--top-left-sm washi-tape--mauve" aria-hidden="true"></div>
-
-            <h3 class="yield-card__title" id="heading-rendimiento">Factor de Rendimiento</h3>
-
-            <!-- Calculadora de porciones -->
-            <div class="calculator" role="group" aria-labelledby="calc-label">
-              <label class="calculator__label" id="calc-label" for="portion-input">
-                Número de porciones
-              </label>
-              <div class="calculator__field">
-                <input
-                  type="number"
-                  id="portion-input"
-                  class="calculator__input"
-                  value="27"
-                  min="1"
-                  max="9999"
-                  step="1"
-                  aria-describedby="calc-error"
-                  aria-invalid="false"
-                />
-                <div class="calculator__stepper">
-                  <button
-                    class="calculator__step-btn"
-                    id="step-up"
-                    type="button"
-                    aria-label="Aumentar porciones en 1"
-                  >+</button>
-                  <button
-                    class="calculator__step-btn"
-                    id="step-down"
-                    type="button"
-                    aria-label="Disminuir porciones en 1"
-                  >&#8722;</button>
-                </div>
-              </div>
-              <p
-                class="calculator__error"
-                id="calc-error"
-                role="alert"
-                aria-live="assertive"
-              ></p>
-            </div>
-
-            <!-- Estadísticas de rendimiento -->
-            <div class="yield-stats">
-              <div class="yield-stat">
-                <p class="yield-stat__label">Masa Total</p>
-                <p class="yield-stat__value" id="total-mass">1350g</p>
-              </div>
-              <div class="yield-stat">
-                <p class="yield-stat__label">Porciones</p>
-                <p class="yield-stat__value" id="portions-display">27</p>
-              </div>
-            </div>
-
-            <p class="yield-unit">
-              Peso por unidad estimado: <strong>50g</strong>
-            </p>
-
-          </div>
-
-          <!-- TARJETA: Foto polaroid del batch -->
-          <figure class="polaroid" aria-label="Foto del batch de galletas">
-            <img
-              class="polaroid__img"
-              src="assets/images/chocolate-chip-cookies.svg"
-              alt="Galletas artesanales con chips de chocolate"
-              loading="lazy"
-              width="196"
-              height="180"
-            />
-            <figcaption class="polaroid__caption">¡Batch perfecto!</figcaption>
-            <span class="sticker-goodjob" aria-hidden="true">GOOD<br />JOB</span>
-          </figure>
-
-          <!-- TARJETA: Perfil Nutricional -->
-          <div class="paper-scrap paper-scrap--rotate-pos" aria-labelledby="heading-nutricion">
-
-            <div class="washi-tape washi-tape--card-top washi-tape--sage" aria-hidden="true"></div>
-
-            <h3 class="yield-card__title yield-card__title--top-offset" id="heading-nutricion">
-              Perfil Nutricional
-            </h3>
-            <p class="nutrition-subtitle">(Por porción de 50g)</p>
-
-            <ul class="nutrition-list" aria-label="Valores nutricionales por porción de 50g">
-              <li class="nutrition-item">
-                <span class="nutrition-item__label">Calorías</span>
-                <span class="nutrition-item__value">240 kcal</span>
-              </li>
-              <li class="nutrition-item">
-                <span class="nutrition-item__label">Grasas</span>
-                <span class="nutrition-item__value">12g</span>
-              </li>
-              <li class="nutrition-item">
-                <span class="nutrition-item__label">Carbohidratos</span>
-                <span class="nutrition-item__value">32g</span>
-              </li>
-              <li class="nutrition-item">
-                <span class="nutrition-item__label">Proteínas</span>
-                <span class="nutrition-item__value">3g</span>
-              </li>
-            </ul>
-
-          </div>
-
-        </div>
-        <!-- /col-right -->
-
-      </div>
-      <!-- /content-grid -->
-
+    <main class="main-content" id="main-content" tabindex="-1">
+      <!-- Las vistas se renderizan aquí mediante el router -->
     </main>
 
   </div>
   <!-- /layout -->
 
+  <!-- Scripts — orden de carga garantizado -->
+  <script src="assets/js/data/recipes.js"></script>
+  <script src="assets/js/state.js"></script>
+  <script src="assets/js/pages/home.js"></script>
+  <script src="assets/js/pages/recipes.js"></script>
+  <script src="assets/js/pages/recipe-detail.js"></script>
+  <script src="assets/js/pages/menus.js"></script>
+  <script src="assets/js/router.js"></script>
   <script src="assets/js/app.js"></script>
+
 </body>
 </html>

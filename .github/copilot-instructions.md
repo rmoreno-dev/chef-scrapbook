@@ -7,7 +7,7 @@ Para contexto completo, usa el prompt `/chef.scrapbook` o lee directamente:
 
 **Chef Scrapbook** — recetario online educativo y gratuito.
 **Propietario:** Rodolfo Moreno | **Eslogan:** Cocina, crea y disfruta.
-**Stack:** HTML5 + CSS3 Custom Properties + JavaScript sin transpilación. Sin framework. Sin backend.
+**Stack:** HTML5 + CSS3 Custom Properties + JavaScript sin transpilación. SPA con hash routing (`#/inicio`, `#/recetas`, `#/menus`). Módulos JS encapsulados en `window.ChefScrapbook`. Sin framework. Sin backend. 4 archivos CSS: `tokens.css`, `styles.css`, `components.css`, `responsive.css`. Iconografía: kit SVG propio en `assets/icons/`.
 
 ## Constantes críticas
 
@@ -31,11 +31,13 @@ var BASE_TOTAL = 1350;            // gramos totales
 
 **SIEMPRE:** leer el archivo antes de modificarlo; distinguir IMPLEMENTADO de PLANIFICADO; verificar accesibilidad WCAG 2.2 AA; consultar `Chef Scrapbook AI/42_MANUAL_DE_NORMAS_BRANDING.md` ante cualquier cambio visual.
 
+**DOCUMENTATION COMPLETION GATE:** Ningún cambio de código puede declararse completo sin haber actualizado el vault. Mínimo obligatorio tras cualquier cambio: `04_ESTADO_ACTUAL.md`, `36_TAREAS_PENDIENTES.md`, `37_HISTORIAL_DE_CAMBIOS.md` (si aplica). Causa: INC-004.
+
 ## Estándares de código
 
 - **HTML:** semántico, BEM para clases CSS.
-- **CSS:** custom properties del sistema; sin colores hardcoded fuera de tokens.
-- **JS:** sin transpilación; patrón IIFE; sin `console.log` en producción; rutas relativas.
+- **CSS:** custom properties del sistema; sin colores hardcoded fuera de tokens; 4 archivos (`tokens.css`, `styles.css`, `components.css`, `responsive.css`).
+- **JS:** sin transpilación; patrón IIFE; namespace `window.ChefScrapbook`; `escapeHTML()` obligatorio antes de innerHTML con datos externos; sin `console.log` en producción; rutas relativas.
 
 ---
-*Chef Scrapbook — copilot-instructions.md v1.0.0 — 2026-06-16*
+*Chef Scrapbook — copilot-instructions.md v2.0.0 — 2026-06-16*

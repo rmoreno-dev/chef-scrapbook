@@ -5,7 +5,7 @@ status: "vigente"
 implementation_status: "PARCIALMENTE IMPLEMENTADO"
 project: "Chef Scrapbook"
 document_type: "funcionalidades"
-version: "1.0.0"
+version: "2.0.0"
 brand_manual_version: "3.1"
 last_updated: "2026-06-16"
 last_verified_against_code: "2026-06-16"
@@ -24,47 +24,79 @@ tags:
 
 ## Capacidades actuales — IMPLEMENTADO
 
-### Navegacion
+### Navegacion SPA
 
 | Componente | Descripcion | Estado |
 |---|---|---|
-| Sidebar desktop | 4 items: Dashboard, Formulas, Laboratorio, Reportes | IMPLEMENTADO |
-| Cabecera movil | Marca + boton de perfil | IMPLEMENTADO |
-| Skip link | Salta al contenido principal (#main-content) | IMPLEMENTADO |
-| Indicador de pagina activa | aria-current="page" | IMPLEMENTADO |
+| Sidebar desktop | 3 items: Inicio, Recetas, Menus con iconos SVG | IMPLEMENTADO |
+| Cabecera movil | Logo favicon + boton hamburguesa | IMPLEMENTADO |
+| Overlay movil | Cierra sidebar al hacer clic fuera | IMPLEMENTADO |
+| Indicador de pagina activa | `aria-current="page"` actualizado por el router | IMPLEMENTADO |
+| Escape key | Cierra sidebar al presionar Escape | IMPLEMENTADO |
+| Skip link | Salta a `#main-content` | IMPLEMENTADO |
+| Sello de marca | `brand-stamp.svg` en pie del sidebar | IMPLEMENTADO |
 
-### Receta
-
-| Componente | Descripcion | Estado |
-|---|---|---|
-| Titulo de receta | H1 con version y calificacion decorativa | IMPLEMENTADO |
-| Matriz de ingredientes | Tabla con 5 ingredientes, pesos, % panadero y fase | IMPLEMENTADO |
-| Metodo de preparacion | OL con 3 pasos (cremado, emulsion, incorporacion) | IMPLEMENTADO |
-| Perfil nutricional | Lista con calorias, grasas, carbohidratos, proteinas | IMPLEMENTADO |
-| Figura polaroid | Ilustracion SVG de galletas | IMPLEMENTADO |
-
-### Calculadora de porciones
+### Vista: Inicio (`#/inicio`)
 
 | Componente | Descripcion | Estado |
 |---|---|---|
-| Input numerico | Campo de texto con valor inicial 27 | IMPLEMENTADO |
-| Botones +/- | Incremento y decremento de porciones | IMPLEMENTADO |
-| Validacion | Entero positivo 1-9999, rechazo de decimales y NaN | IMPLEMENTADO |
-| Escalado de ingredientes | Actualizacion en tiempo real de todos los pesos | IMPLEMENTADO |
-| Actualizacion de totales | Masa total y display de porciones | IMPLEMENTADO |
-| Anuncio aria-live | Mensaje de actualizacion para lectores de pantalla | IMPLEMENTADO |
-| Mensaje de error | Texto descriptivo con role="alert" | IMPLEMENTADO |
+| Hero editorial | Seccion de bienvenida con tipografia Prata | IMPLEMENTADO |
+| Tarjetas de novedades | Acceso rapido a calculadora y catalogo | IMPLEMENTADO |
+| Grid de recetas destacadas | Receta real + tarjetas "Proximamente" | IMPLEMENTADO |
+| Acceso al planificador | Card con enlace a #/menus | IMPLEMENTADO |
 
-### Elementos visuales (scrapbooking)
+### Vista: Biblioteca de Recetas (`#/recetas`)
 
 | Componente | Descripcion | Estado |
 |---|---|---|
-| Papel rasgado (paper-scrap) | Cards con borde y sombra tipo papel | IMPLEMENTADO |
-| Cinta washi | Decoracion de posicion variable y color (mauve/sage) | IMPLEMENTADO |
-| Stickers | Excellent! y GOOD JOB | IMPLEMENTADO |
-| Rotaciones ligeras | paper-scrap--rotate-pos y --rotate-neg2 | IMPLEMENTADO |
-| Badges de fase | Dry, Cremado, Liquidos, Inclusion | IMPLEMENTADO |
-| Highlighter | Span para resaltar el 100% de harina | IMPLEMENTADO |
+| Barra de busqueda | Filtra recetas por nombre en tiempo real | IMPLEMENTADO |
+| Pills de categoria | Filtro por Panaderia, Reposteria, etc. | IMPLEMENTADO |
+| Grid de recetas | Cards con nombre, tiempo, porciones e imagen | IMPLEMENTADO |
+| Boton de favorito | Toggle con persistencia en localStorage | IMPLEMENTADO |
+| Tarjetas bloqueadas | Cards "Proximamente" (recetas sin implementar) | IMPLEMENTADO |
+
+### Vista: Detalle de Receta (`#/recetas/:slug`)
+
+| Componente | Descripcion | Estado |
+|---|---|---|
+| Encabezado de receta | Nombre, version, categoria, metadata | IMPLEMENTADO |
+| Tabla de ingredientes | 5 ingredientes con pesos, unidades, fases y % panadero | IMPLEMENTADO |
+| Calculadora de porciones | BASE_PORTIONS = 27, escalado en tiempo real | IMPLEMENTADO |
+| Botones step +/- | Incremento/decremento con validacion | IMPLEMENTADO |
+| Validacion de entrada | Entero positivo 1-9999 | IMPLEMENTADO |
+| Anuncio aria-live | Para lectores de pantalla | IMPLEMENTADO |
+| Metodo de preparacion | 3 pasos: Cremado, Emulsion, Incorporacion | IMPLEMENTADO |
+| Perfil nutricional | Calorias, grasas, carbohidratos, proteinas por 50g | IMPLEMENTADO |
+| Boton de favorito | Toggle persistido en localStorage | IMPLEMENTADO |
+
+### Vista: Menu Semanal (`#/menus`)
+
+| Componente | Descripcion | Estado |
+|---|---|---|
+| Grid 7 dias x 4 tiempos | Desayuno, Almuerzo, Cena, Colacion | IMPLEMENTADO |
+| Asignar receta a slot | Dropdown de recetas disponibles | IMPLEMENTADO |
+| Limpiar slot | Eliminar asignacion de un tiempo del dia | IMPLEMENTADO |
+| Tareas de preparacion | Lista con agregar, toggle completado, eliminar | IMPLEMENTADO |
+| Lista de compras | Agregar, toggle completado, eliminar, limpiar todo | IMPLEMENTADO |
+| Persistencia | Estado en localStorage, sobrevive recarga de pagina | IMPLEMENTADO |
+
+### Sistema de estado y persistencia
+
+| Componente | Descripcion | Estado |
+|---|---|---|
+| Favoritos | Guardar/quitar recetas favoritas | IMPLEMENTADO |
+| Plan de menu semanal | Asignaciones dia/tiempo/receta | IMPLEMENTADO |
+| Lista de compras | Items con cantidad, unidad y estado completado | IMPLEMENTADO |
+| Tareas de preparacion | Items con estado completado | IMPLEMENTADO |
+| Preferencias | Configuracion del usuario | IMPLEMENTADO |
+
+### Funciones globales compartidas
+
+| Funcion | Descripcion | Estado |
+|---|---|---|
+| `ChefScrapbook.escapeHTML(str)` | Sanitiza strings para uso seguro en `innerHTML` | IMPLEMENTADO |
+| `ChefScrapbook.toast(msg, type)` | Notificaciones tipo toast con auto-cierre 3s | IMPLEMENTADO |
+| `ChefScrapbook.Calculator.init()` | Inicializa la calculadora de porciones en la vista activa | IMPLEMENTADO |
 
 ## Vision del manual v3.1 — PLANIFICADO
 
@@ -73,16 +105,17 @@ tags:
 
 | Modulo | Descripcion |
 |---|---|
-| Inicio / Homepage | Hero, destacados, busqueda global |
-| Busqueda | Filtros por categoria, tiempo, dificultad |
-| Catalogo de recetas | Listado con cards y paginacion |
-| Tecnicas | Biblioteca de tecnicas culinarias |
-| Colecciones | Agrupaciones de recetas por tema |
-| Menus | Planificacion semanal de menus |
-| Diario | Notas personales por receta |
-| Cuenta de usuario | Perfil, guardados, exportacion |
+| Logo oficial | Integracion del logo gato chef con arco y ramas |
+| Hosting local de fuentes | Eliminar dependencia de Google Fonts CDN |
+| Tecnicas culinarias | Biblioteca de tecnicas con explicacion y video |
+| Colecciones | Agrupaciones de recetas por tema o temporada |
+| Segunda y tercera receta | Ampliacion del catalogo con recetas reales |
+| Cuenta de usuario | Perfil, sincronizacion en la nube, exportacion |
 | Login y registro | Autenticacion segura |
-| Comunidad | Compartir versiones y variantes |
+| Comunidad | Compartir versiones y variantes de recetas |
+| Exportar PDF | Descarga de receta en formato imprimible |
+| SEO y metadatos | Open Graph, JSON-LD (schema.org/Recipe) |
+| Suite de pruebas E2E | Playwright + axe-core |
 
 ## Documentos relacionados
 

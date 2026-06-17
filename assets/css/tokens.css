@@ -73,4 +73,19 @@
   --shadow-card:    0 4px 16px rgba(37, 50, 69, 0.06);
   --shadow-lift:    0 2px 8px  rgba(37, 50, 69, 0.10);
   --shadow-sticker: 2px 2px 5px rgba(37, 50, 69, 0.15);
+  --shadow-sidebar: 4px 0 20px rgba(37, 50, 69, 0.10);
+
+  /* ── Colores funcionales ── */
+  --color-success:      #4A7C5F;
+  --color-success-bg:   #EAF2ED;
+  --color-warning:      #8A6A1A;
+  --color-warning-bg:   #FDF5DC;
+  --color-error:        #C0392B;
+  --color-error-bg:     #FDE8E6;
+  --color-info:         var(--color-ink-light);
+  --color-info-bg:      var(--color-pale-sage);
+
+  /* ── Transiciones ── */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
 }

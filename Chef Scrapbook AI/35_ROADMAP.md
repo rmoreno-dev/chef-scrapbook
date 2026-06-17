@@ -5,7 +5,7 @@ status: "vigente"
 implementation_status: "PLANIFICADO"
 project: "Chef Scrapbook"
 document_type: "planificacion"
-version: "1.0.0"
+version: "2.0.0"
 brand_manual_version: "3.1"
 last_updated: "2026-06-16"
 last_verified_against_code: "2026-06-16"
@@ -26,50 +26,54 @@ tags:
 
 - Vault Obsidian con 44 documentos.
 - Manual de normas de marca derivado del v3.1.
-- Prompt maestro y comando /chef.scrapbook.
+- Prompt maestro y comando `/chef.scrapbook`.
 - Inventario del paquete de marca.
 
-## Fase 2 — Integracion oficial de marca (PENDIENTE)
+## Fase 2 — Integracion oficial de marca (PARCIALMENTE COMPLETADA)
 
-- Integrar logo oficial del gato chef en header y favicon.
-- Migrar textos placeholder ("Culinary Journal" etc.) a nombres oficiales.
-- Definir y aplicar variante del logo para GitHub Pages.
+- [x] Migrar textos placeholder ("Culinary Journal" etc.) a nombres oficiales. — COMPLETADO en v0.2.0
+- [x] Migrar iconografia a kit SVG oficial del manual. — COMPLETADO en v0.2.0
+- [x] Favicon SVG con el isotipo cat chef. — COMPLETADO en v0.2.0
+- [ ] Integrar logo oficial del gato chef en header y favicon. — PENDIENTE (DT-001)
 
 ## Fase 3 — Publicacion GitHub Pages (PENDIENTE)
 
-- Crear repositorio en GitHub.
+- Crear repositorio en GitHub (puede ya existir como privado).
 - Activar GitHub Pages desde main.
-- Verificar rutas relativas y compatibilidad.
+- Verificar rutas relativas y compatibilidad con la URL base.
 
-## Fase 4 — Ampliacion del recetario (PLANIFICADO)
+## Fase 4 — SPA y experiencia de usuario (COMPLETADA en v0.2.0)
+
+- [x] Arquitectura SPA con hash routing.
+- [x] Vista Inicio con hero, novedades y grid de recetas.
+- [x] Vista Biblioteca de Recetas con busqueda y filtros.
+- [x] Vista Detalle de Receta con calculadora preservada.
+- [x] Vista Menu Semanal con planificador 7x4.
+- [x] Persistencia de favoritos, plan, compras y tareas en localStorage.
+
+## Fase 5 — Ampliacion del recetario (PLANIFICADO)
 
 - Segunda receta implementada.
 - Tercera receta implementada.
-- Patron de card de receta.
+- Patron de card de receta consolidado y reutilizable.
 
-## Fase 5 — Modelo editorial (PLANIFICADO)
+## Fase 6 — Calidad y pruebas (PLANIFICADO)
 
-- Catalogo navegable de recetas.
-- Sistema de categorias y etiquetas.
-- Busqueda basica.
-
-## Fase 6 — Persistencia opcional (PLANIFICADO)
-
-- Evaluacion de necesidades de persistencia.
-- Si se decide: definir backend minimo o soluciones sin servidor.
-- Cuentas de usuario con privacidad por diseno.
-
-## Fase 7 — Calidad y pruebas (PLANIFICADO)
-
-- Suite de pruebas E2E (Playwright).
-- Pruebas de accesibilidad automatizadas (axe-core).
+- Suite de pruebas E2E con Playwright.
+- Pruebas de accesibilidad automatizadas con axe-core.
 - Pipeline CI/CD con GitHub Actions.
+
+## Fase 7 — Persistencia avanzada (PLANIFICADO)
+
+- Evaluacion de necesidades de persistencia en la nube.
+- Si se decide: definir backend minimo o solucion sin servidor.
+- Cuentas de usuario con privacidad por diseno.
 
 ## Fase 8 — Escalabilidad (PLANIFICADO)
 
 - Migracion a framework (Next.js + TypeScript) si lo justifica el volumen.
-- Sistema de iconografia oficial.
 - Storybook de componentes.
+- Hosting local de fuentes (sin CDN de Google Fonts).
 
 ## Fase 9 — Localizacion (PLANIFICADO)
 

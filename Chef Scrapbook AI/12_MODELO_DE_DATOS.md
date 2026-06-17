@@ -2,10 +2,10 @@
 title: "Modelo de Datos"
 document_id: "CS-12"
 status: "vigente"
-implementation_status: "PARCIALMENTE IMPLEMENTADO"
+implementation_status: "IMPLEMENTADO"
 project: "Chef Scrapbook"
 document_type: "datos"
-version: "1.0.0"
+version: "2.0.0"
 brand_manual_version: "3.1"
 last_updated: "2026-06-16"
 last_verified_against_code: "2026-06-16"
@@ -22,11 +22,59 @@ tags:
 
 # Modelo de Datos
 
-## Datos actuales — estaticos en codigo
+## Fuente de datos de recetas — `assets/js/data/recipes.js`
 
-No existe base de datos. Los datos de la receta estan codificados directamente en index.html y app.js.
+No existe base de datos. El catalogo de recetas es un array de objetos JavaScript en `data/recipes.js`. Este modulo es la unica fuente de verdad para las recetas.
 
-### Constantes del calculador (app.js)
+### Esquema de una receta
+
+```javascript
+{
+  id: 'galletas-de-chispas',
+  slug: 'galletas-de-chispas',        // usado en las rutas: #/recetas/galletas-de-chispas
+  name: 'Galletas de Chispas',
+  version: '3.2',
+  versionLabel: 'Ajuste de humedad',
+  category: 'panaderia',
+  basePorciones: 27,                  // BASE_PORTIONS = 27 (inmutable)
+  portionWeight: 50,                  // gramos por porcion
+  totalWeight: 1350,                  // gramos totales de la formula
+  featured: true,
+
+  ingredients: [
+    {
+      id: 'ing-harina',
+      name: 'Harina de Trigo AP',
+      base: 500,                      // gramos base (para 27 porciones)
+      unit: 'g',
+      phase: 'Secos',
+      bakersPercent: '100%'
+    },
+    // ... (5 ingredientes en total)
+  ],
+
+  steps: [
+    { title: 'Cremado', description: '...' },
+    { title: 'Emulsion', description: '...' },
+    { title: 'Incorporacion', description: '...' }
+  ],
+
+  nutrition: {
+    calories: 240,
+    fat: 12,
+    carbs: 32,
+    protein: 3,
+    portionSize: 50                   // gramos por porcion de referencia
+  },
+
+  shoppingItems: [
+    { qty: 500, unit: 'g', name: 'Harina de Trigo AP', category: 'Secos' },
+    // ... (5 items)
+  ]
+}
+```
+
+### Constantes de la calculadora
 
 ```javascript
 var BASE_PORTIONS = 27;             // porciones base de la receta
@@ -35,59 +83,68 @@ var BASE_TOTAL = 1350;              // gramos totales (suma de ingredientes)
 ```
 
 > [!important]
-> BASE_PORTIONS = 27 es el valor real implementado. El manual v3.1 usa baseServings: 12 como **ejemplo conceptual** en el Apendice J. Estos valores NO son intercambiables. El codigo es la fuente de verdad para el valor real.
+> BASE_PORTIONS = 27 es el valor real implementado. El manual v3.1 usa `baseServings: 12` como **ejemplo conceptual** en el Apendice J. Estos valores NO son intercambiables. El codigo es la fuente de verdad para el valor real.
 
-### Ingredientes base (app.js)
+### Metodos del modulo de datos
 
 ```javascript
-var ingredients = [
-  { id: "ing-harina",       base: 500  },  // Harina de Trigo AP
-  { id: "ing-azucar",       base: 250  },  // Azucar Morena
-  { id: "ing-mantequilla",  base: 200  },  // Mantequilla Sin sal
-  { id: "ing-huevos",       base: 100  },  // Huevos
-  { id: "ing-chispas",      base: 300  },  // Chispas de Chocolate
-];
+window.ChefScrapbook.data = {
+  recipes: [...],
+  getBySlug: function(slug) { ... },      // retorna receta o null
+  getByCategory: function(cat) { ... },   // retorna array filtrado
+  getFeatured: function() { ... }         // retorna array de recetas con featured: true
+};
 ```
 
-### Calculo de escala
+## Estado del usuario — `assets/js/state.js`
 
+El estado del usuario se persiste en `localStorage` bajo la clave `chef-scrapbook-v1`. Se serializa como JSON con la siguiente estructura:
+
+```javascript
+{
+  favorites: ['galletas-de-chispas'],    // array de slugs
+
+  menuPlan: {
+    'lunes-desayuno': 'galletas-de-chispas',  // slug valido o ausente (null se omite)
+    // ... (7 dias x 4 tiempos = 28 slots posibles)
+    // REGLA: solo slugs existentes en CS.data.recipes. Texto libre PROHIBIDO.
+    // Al cargar, _sanitizeMenuPlan() descarta valores invalidos o texto libre.
+  },
+
+  shoppingList: [
+    { id: 'item-1', text: 'Harina', qty: 500, unit: 'g', checked: false }
+  ],
+
+  prepTasks: [
+    { id: 'task-1', text: 'Atemperar mantequilla', done: false }
+  ],
+
+  preferences: {}
+}
 ```
-factor = porciones_deseadas / 27
-cantidad_escalada = round(ingrediente.base * factor)
-total_escalado = round(1350 * factor)
-```
 
-### Datos estaticos en HTML
+### Claves de dias y tiempos del planificador
 
-Valores adicionales de la receta en index.html:
-
-| Campo | Valor | Ubicacion |
-|---|---|---|
-| Receta | Galletas de Chispas | Titulo H1 |
-| Version | v3.2 | Subtitulo |
-| Calorias por porcion | 240 kcal | Perfil nutricional |
-| Grasas por porcion | 12g | Perfil nutricional |
-| Carbohidratos por porcion | 32g | Perfil nutricional |
-| Proteinas por porcion | 3g | Perfil nutricional |
-| % Panadero harina | 100% | Tabla ingredientes |
-| % Panadero azucar | 50% | Tabla ingredientes |
-| % Panadero mantequilla | 40% | Tabla ingredientes |
-| % Panadero huevos | 20% | Tabla ingredientes |
-| % Panadero chispas | 60% | Tabla ingredientes |
-
-### Data attributes en DOM
-
-| ID del elemento | Dato que contiene |
+| Dias | Tiempos |
 |---|---|
-| #ing-harina | Peso escalado de harina |
-| #ing-azucar | Peso escalado de azucar |
-| #ing-mantequilla | Peso escalado de mantequilla |
-| #ing-huevos | Peso escalado de huevos |
-| #ing-chispas | Peso escalado de chispas |
-| #table-total-weight | Peso total de masa escalado |
-| #total-mass | Peso total (tarjeta de rendimiento) |
-| #portions-display | Numero de porciones actual |
-| #portion-input | Input del usuario |
+| domingo, lunes, martes, miercoles, jueves, viernes, sabado | desayuno, almuerzo, cena, snack |
+
+El slot se construye como `${dia}-${tiempo}`, por ejemplo: `lunes-desayuno`. Los acentos se normalizan: `miercoles` (no `miércoles`).
+
+### Regla de la lista de compras
+
+La lista de compras tiene dos secciones:
+
+1. **Del plan semanal** (auto-derivada): generada en tiempo real por `CS.State.getMenuShoppingItems()`. Cuenta cuantas veces esta asignada cada receta y escala las cantidades de `shoppingItems`. No se almacena en localStorage — se recalcula al renderizar.
+2. **Elementos adicionales** (manuales): gestionados por el usuario via formulario. Se almacenan en `shoppingList` en localStorage.
+
+Regla de escala: si la receta esta asignada N veces, `qty × N` para cada ingrediente.
+
+## Regla de honestidad del catalogo
+
+- Solo se admiten recetas reales, completamente documentadas, en el array `recipes`.
+- Las tarjetas de recetas no implementadas se renderizan como "Proximamente" en la vista, sin datos falsos.
+- NO crear objetos de receta con datos inventados o incompletos.
 
 ## Modelo futuro conceptual (PLANIFICADO)
 

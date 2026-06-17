@@ -5,7 +5,7 @@ status: "vigente"
 implementation_status: "IMPLEMENTADO"
 project: "Chef Scrapbook"
 document_type: "arquitectura"
-version: "1.0.0"
+version: "2.0.0"
 brand_manual_version: "3.1"
 last_updated: "2026-06-16"
 last_verified_against_code: "2026-06-16"
@@ -31,13 +31,13 @@ tags:
 
 **Manual recomienda Next.js para evolucion futura:** PLANIFICADO, no actual.
 
-## ADR-002: JavaScript ES5 compatible
+## ADR-002: JavaScript sin transpilacion
 
 **Estado:** Aprobado
 
-**Decision:** Usar var, no const/let. IIFE para encapsulamiento. Sin modulos ES6.
+**Decision:** Usar `var`, no `const`/`let`. IIFE para encapsulamiento. Sin modulos ES6. Sin build step. La aplicacion requiere un navegador moderno (por el uso de `Number.isFinite`, `Number.isInteger`, localStorage, etc.).
 
-**Razon:** Compatibilidad maxima con navegadores sin necesidad de transpilador.
+**Razon:** Compatibilidad maxima con navegadores modernos sin necesidad de transpilador, bundler ni configuracion de build.
 
 ## ADR-003: GitHub Pages como plataforma de despliegue
 
@@ -53,7 +53,7 @@ tags:
 
 **Contexto:** Imagenes de Google AI Studio tenian licencia desconocida.
 
-**Decision:** Crear SVG ilustrativos propios para avatar y galletas.
+**Decision:** Crear SVG ilustrativos propios para avatar y galletas. En v0.2.0, adoptar los SVG del kit oficial de marca.
 
 **Resultado:** Sin dependencias de imagenes externas. Aptos para publicacion.
 
@@ -69,7 +69,7 @@ tags:
 
 **Estado:** Aprobado
 
-**Decision:** Chef Scrapbook AI/ como vault Obsidian con 44 documentos numerados.
+**Decision:** `Chef Scrapbook AI/` como vault Obsidian con 44 documentos numerados.
 
 **Razon:** Contexto estructurado para agentes IA, navegacion por wikilinks, versionable en Git.
 
@@ -83,7 +83,7 @@ tags:
 
 **Estado:** Aprobado
 
-**Decision:** El paquete completo de marca (161 archivos) vive en .local-reference/ excluido del repositorio publico.
+**Decision:** El paquete completo de marca (161 archivos) vive en `.local-reference/` excluido del repositorio publico.
 
 **Razon:** Los activos de marca son propietarios. Solo se publican los derivados aprobados.
 
@@ -91,9 +91,99 @@ tags:
 
 **Estado:** Decision pendiente
 
-**Contexto:** El logo oficial (gato chef) esta en .local-reference. El codigo actual usa chef-avatar.svg como provisional.
+**Contexto:** El logo oficial (gato chef con arco y ramas) esta en `.local-reference`. El codigo actual usa `chef-avatar.svg` como provisional.
 
 **Tarea:** Definir que variante se integra en header, favicon y GitHub Pages, y solicitar autorizacion de implementacion.
+
+## ADR-010: Arquitectura SPA con hash routing
+
+**Estado:** Aprobado (implementado en v0.2.0)
+
+**Contexto:** Para soportar multiples vistas navegables sin backend ni servidor, se necesita un mecanismo de enrutamiento compatible con GitHub Pages (que no soporta server-side routing para SPA).
+
+**Decision:** Usar hash routing (`window.location.hash`, evento `hashchange`). Rutas: `#/inicio`, `#/recetas`, `#/recetas/:slug`, `#/menus`.
+
+**Consecuencias:** URLs con `#` (no ideales para SEO, pero funcionales para el MVP). Compatible con GitHub Pages sin configuracion adicional.
+
+## ADR-011: Modulo de datos separado (data/recipes.js)
+
+**Estado:** Aprobado (implementado en v0.2.0)
+
+**Contexto:** En v0.1.0 los datos de la receta estaban incrustados en `index.html` y `app.js`. Para soportar busqueda, filtrado y detalle de receta dinamico, se necesita una fuente de datos consulta.
+
+**Decision:** Crear `assets/js/data/recipes.js` como modulo dedicado con el catalogo completo y metodos `getBySlug()`, `getByCategory()`, `getFeatured()`.
+
+**Consecuencias:** Single source of truth para el catalogo. Separation of concerns entre datos, estado y presentacion.
+
+## ADR-012: Persistencia en localStorage (no en backend)
+
+**Estado:** Aprobado (implementado en v0.2.0)
+
+**Contexto:** El usuario necesita persistir favoritos, plan de menu, lista de compras y tareas entre sesiones, sin requerir autenticacion ni backend.
+
+**Decision:** Usar `localStorage` con clave `chef-scrapbook-v1`. El estado completo se serializa como JSON.
+
+**Consecuencias:** Datos locales al dispositivo (no sincronizados entre dispositivos). Sin privacidad de datos en escenarios de dispositivo compartido. Datos pueden borrarse si el usuario limpia el almacenamiento del navegador.
+
+## ADR-013: Catalogo con una sola receta real (Data honesty)
+
+**Estado:** Aprobado (implementado en v0.2.0)
+
+**Decision:** El array `recipes` contiene UNICAMENTE recetas reales y completamente documentadas. Las posiciones del grid que no tienen receta se renderizan como "Proximamente" sin datos inventados.
+
+**Razon:** Integridad del contenido. No presentar informacion falsa al usuario. Cumple el principio de "claridad" del manual de marca.
+
+## ADR-014: Kit SVG del manual como sistema iconografico
+
+**Estado:** Aprobado (implementado en v0.2.0)
+
+**Contexto:** La v0.1.0 usaba Material Symbols Outlined (Google CDN), que no es el sistema del manual v3.1. El manual define un kit SVG propio de 24x24 px.
+
+**Decision:** Copiar los iconos SVG del kit oficial desde `.local-reference/brand-manual-v3.1/assets/svg/` a `assets/icons/`. Sin CDN. Sin dependencia externa.
+
+**Consecuencias:** Iconografia conforme al manual. Sin dependencia de CDN para iconos. DT-002 resuelto.
+
+## ADR-015: Namespace global window.ChefScrapbook
+
+**Estado:** Aprobado (implementado en v0.2.0)
+
+**Decision:** Todos los modulos JS acumulan en el objeto `window.ChefScrapbook` para comunicarse sin modulos ES6 ni bundler.
+
+**Consecuencias:** Namespace unico que evita colisiones. El orden de carga de scripts en HTML es critico. Sin tree-shaking ni code splitting.
+
+## ADR-016: Selector de receta con <dialog> nativo
+
+**Estado:** Aprobado (implementado en v0.2.0-patch, 2026-06-16)
+
+**Contexto:** Las celdas del planificador usaban `contenteditable`, lo que permitia texto libre sin validacion. Se necesitaba una interaccion estructurada que garantizara que solo se asignen slugs validos.
+
+**Decision:** `<dialog>` nativo del navegador con `showModal()`. Cada celda es un `<button>`. Al activarlo, se abre el dialog con la lista de recetas reales. Escape cierra (comportamiento nativo de `showModal()`). Al cerrar, el foco vuelve al boton de origen via el evento `close` del dialog.
+
+**Consecuencias:** Focus trap gratuito en navegadores modernos. Sin dependencias. Compatible con teclado y lector de pantalla. `aria-labelledby` y `aria-describedby` correctamente asociados.
+
+**Referencia:** DEF-008 en [[32_ERRORES_CONOCIDOS]].
+
+## ADR-017: Indice de busqueda normalizado por receta
+
+**Estado:** Aprobado (implementado en v0.2.0-patch, 2026-06-16)
+
+**Contexto:** La busqueda solo cubria nombre, descripcion y categoryLabel. Los usuarios esperan encontrar recetas por ingrediente.
+
+**Decision:** `_buildIndex(r)` concatena: `name`, `description`, `category`, `categoryLabel`, `subcategory`, `ingredients[].name`, `tags` (si existen). `_normalize()` aplica: lowercase, trim, colapso de espacios, normalizacion de diacriticos (a/e/i/o/u, n). El termino de busqueda se normaliza con la misma funcion. Debounce 300 ms en el input.
+
+**Consecuencias:** Busqueda por ingrediente ("harina", "mantequilla"). Sin datos inventados: solo campos reales de la receta. Consistente entre counter y grid.
+
+**Referencia:** DEF-007 en [[32_ERRORES_CONOCIDOS]].
+
+## ADR-018: Lista de compras derivada de asignaciones validas + elementos manuales
+
+**Estado:** Aprobado (implementado en v0.2.0-patch, 2026-06-16)
+
+**Contexto:** Con `contenteditable`, la lista de compras no podia derivarse de recetas reales. Se necesitaba conectar el planner con la lista de compras.
+
+**Decision:** La lista de compras tiene dos secciones: (1) items auto-derivados de `CS.State.getMenuShoppingItems()` (cuenta ocurrencias de cada slug en el plan, escala `shoppingItems.qty × N`), no persistidos en localStorage; (2) items manuales del usuario, persistidos en `shoppingList`. "Limpiar extra" solo borra los manuales.
+
+**Consecuencias:** La seccion del plan siempre refleja el estado actual de las asignaciones. Sin duplicacion de datos en localStorage. Regla documentada en [[12_MODELO_DE_DATOS]].
 
 ## Documentos relacionados
 

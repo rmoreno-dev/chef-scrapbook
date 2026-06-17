@@ -533,11 +533,33 @@ Si este prompt se utiliza en otro agente o entorno sin el slash command:
 
 - El mensaje recibido es el **INPUT_DE_TAREA**.
 - El agente debe usar `Chef Scrapbook AI/` como vault de referencia.
-- Debe seguir el mismo protocolo de 16 secciones (0–15).
+- Debe seguir el mismo protocolo de 17 secciones (0–16).
 - No depende del slash para activar el contexto.
 - Debe inspeccionar el repositorio real antes de actuar.
 - Debe mantener seguridad, branding, documentación y control Git con las mismas reglas.
 
 ---
 
-*Chef Scrapbook AI v1.0.0 — AI Context Router v2.0.0 — 2026-06-16*
+---
+
+## 16. DOCUMENTATION COMPLETION GATE
+
+**Ningún cambio de código puede declararse completo sin haber sincronizado el vault.**
+
+Esta es una condición bloqueante, no una regla opcional. Antes de reportar cualquier tarea de código como terminada:
+
+1. Identificar todos los documentos del vault que describen el área afectada.
+2. Verificar que cada uno de esos documentos refleje el estado actual del código — no la versión anterior.
+3. Si algún documento está desactualizado, actualizarlo antes de cerrar la tarea.
+4. No reportar "completado" hasta que el vault sea coherente con el código real.
+
+**Mínimo siempre:**
+- `04_ESTADO_ACTUAL.md` — si cambió el estado del proyecto.
+- `36_TAREAS_PENDIENTES.md` — si se completó o surgió una tarea.
+- `37_HISTORIAL_DE_CAMBIOS.md` — si hay un cambio significativo que registrar.
+
+**Causa de este gate:** INC-004 — el rediseño estructural v0.2.0 se implementó sin sincronizar el vault, dejando 22+ documentos obsoletos. Ver `Chef Scrapbook AI/38_INCIDENTES_Y_SOLUCIONES.md`.
+
+---
+
+*Chef Scrapbook AI v1.0.0 — AI Context Router v3.0.0 — 2026-06-16*

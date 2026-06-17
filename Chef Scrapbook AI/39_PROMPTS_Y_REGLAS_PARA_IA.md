@@ -80,6 +80,24 @@ Después de cualquier cambio en el código, evaluar si hay que actualizar:
 - [[37_HISTORIAL_DE_CAMBIOS]]
 - Y según corresponda: [[09_MODULOS_Y_FUNCIONALIDADES]], [[12_MODELO_DE_DATOS]], [[16_REGLAS_DE_NEGOCIO]], [[31_CASOS_DE_PRUEBA]], [[32_ERRORES_CONOCIDOS]], [[33_DECISIONES_TECNICAS]], [[34_DEUDA_TECNICA]], [[42_MANUAL_DE_NORMAS_BRANDING]].
 
+## DOCUMENTATION COMPLETION GATE
+
+**Ningún cambio de código puede declararse completo sin haber sincronizado el vault.**
+
+Esta es una condición bloqueante, no una regla opcional. Antes de reportar cualquier tarea de código como terminada:
+
+1. Identificar todos los documentos del vault que describen el área afectada.
+2. Verificar que cada uno de esos documentos refleje el estado actual del código — no la versión anterior.
+3. Si algún documento está desactualizado, actualizarlo antes de cerrar la tarea.
+4. No reportar "completado" hasta que el vault sea coherente con el código real.
+
+**Mínimo siempre:**
+- [[04_ESTADO_ACTUAL]] — si cambió el estado del proyecto.
+- [[36_TAREAS_PENDIENTES]] — si se completó o surgió una tarea.
+- [[37_HISTORIAL_DE_CAMBIOS]] — si hay un cambio significativo que registrar.
+
+**Causa de este gate:** INC-004 — el rediseño estructural v0.2.0 se implementó sin sincronizar el vault, dejando 22+ documentos obsoletos. Ver [[38_INCIDENTES_Y_SOLUCIONES]].
+
 ## Cómo resolver contradicciones
 
 1. El código actual prevalece sobre el manual para el estado presente.

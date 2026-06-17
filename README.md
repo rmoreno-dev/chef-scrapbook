@@ -7,21 +7,28 @@ se encuentra con la calidez de un cuaderno artesanal.
 
 ## Estado actual
 
-> **Versión 0.1.0 — Primera versión funcional**
+> **Versión 0.2.0 — SPA con hash routing**
 >
-> Página de fórmula completa con calculadora de porciones interactiva.
-> Optimizada para escritorio y móvil. Lista para pruebas locales.
+> Aplicación de página única con 4 vistas (Inicio, Recetas, Detalle de receta, Menús),
+> calculadora de porciones interactiva, favoritos, buscador, planificador semanal
+> y lista de compras. Persistencia en localStorage. Optimizada para escritorio y móvil.
 
 ---
 
 ## Características
 
+- **SPA con hash routing** — 4 vistas sin recarga: `#/inicio`, `#/recetas`, `#/recetas/:slug`, `#/menus`
 - **Fórmula de Galletas de Chispas v3.2** con Matriz de Ingredientes completa
 - **Calculadora de porciones** — escala todos los ingredientes en tiempo real
 - **Porcentajes de panadero** con indicador de fase (Secos, Cremado, Líquidos, Inclusión)
+- **Buscador de recetas** con filtro por categoría
+- **Favoritos** — marcado/desmarcado con persistencia en localStorage
+- **Planificador semanal** — grid de 7 días × 4 tiempos de comida
+- **Lista de compras** generada automáticamente desde el planner
 - **Método de preparación** en 3 pasos con estilo notebook
-- **Perfil nutricional** por porción de 50g
+- **Perfil nutricional** por porción de 50 g
 - **Navegación lateral** (escritorio) y cabecera sticky (móvil)
+- **Kit SVG propio** — iconografía del sistema de diseño Vanilla Ink en `assets/icons/`
 - **Sistema visual Vanilla Ink** — editorial, botánico, refinado
 - **Totalmente accesible**: etiquetas ARIA, navegación por teclado, `aria-live`, foco visible, `prefers-reduced-motion`
 - **Responsive** desde 320 px hasta escritorio wide
@@ -33,16 +40,35 @@ se encuentra con la calidez de un cuaderno artesanal.
 
 ```
 /
-├── index.html              # Página principal
+├── index.html                      # Shell SPA — estructura fija; contenido renderizado por JS
 ├── assets/
 │   ├── css/
-│   │   ├── tokens.css      # Variables CSS del sistema Vanilla Ink
-│   │   └── styles.css      # Estilos completos
+│   │   ├── tokens.css              # Variables CSS del sistema Vanilla Ink
+│   │   ├── styles.css              # Estilos base y layout
+│   │   ├── components.css          # Componentes reutilizables (cards, buttons, inputs)
+│   │   └── responsive.css          # Media queries y adaptaciones móvil
 │   ├── js/
-│   │   └── app.js          # Lógica de la calculadora de porciones
-│   └── images/             # Imágenes propias (carpeta reservada)
+│   │   ├── data/
+│   │   │   └── recipes.js          # Datos de recetas (catálogo canónico)
+│   │   ├── state.js                # Estado global y persistencia localStorage
+│   │   ├── router.js               # Hash router SPA
+│   │   ├── pages/
+│   │   │   ├── home.js             # Vista Inicio
+│   │   │   ├── recipes.js          # Vista Recetas (listado + buscador)
+│   │   │   ├── recipe-detail.js    # Vista Detalle de receta + calculadora
+│   │   │   └── menus.js            # Vista Menús (planner + lista de compras)
+│   │   └── app.js                  # Bootstrap: namespace ChefScrapbook, toast, init
+│   ├── icons/                      # Kit SVG de iconografía propia (18 iconos)
+│   ├── branding/                   # SVGs de identidad provisional (chef-avatar, etc.)
+│   └── images/
+│       └── favicon.svg             # Favicon SVG
 ├── docs/
-│   └── ASSET-SOURCES.md    # Registro de activos externos y licencias
+│   └── ASSET-SOURCES.md            # Registro de activos externos y licencias
+├── Chef Scrapbook AI/              # Vault de documentación (44 documentos Obsidian)
+├── .github/
+│   ├── copilot-instructions.md     # Instrucciones permanentes para Copilot
+│   └── prompts/
+│       └── chef.scrapbook.prompt.md # AI Context Router v3.0.0
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -98,27 +124,14 @@ Para publicar (cuando esté autorizado):
 
 | Tecnología               | Uso                                      |
 |--------------------------|------------------------------------------|
-| HTML5 semántico          | Estructura y accesibilidad               |
+| HTML5 semántico          | Shell SPA y accesibilidad                |
 | CSS3 con custom properties | Sistema de diseño Vanilla Ink en tokens |
-| JavaScript ES5+ vanilla  | Calculadora de porciones                 |
+| JavaScript vanilla       | Router SPA, estado, vistas, calculadora  |
+| localStorage             | Persistencia de favoritos, planner, preferencias |
 | Google Fonts             | Prata · Mulish · Great Vibes             |
-| Material Symbols Outlined | Iconografía de navegación               |
+| SVG kit propio           | Iconografía oficial del sistema de diseño |
 
-Sin frameworks CSS · Sin bibliotecas JS · Sin build step
-
----
-
-## Activos externos pendientes de reemplazo
-
-Las imágenes fotográficas utilizadas actualmente (foto de perfil y foto de
-galletas) provienen de Google AI Studio y tienen **licencia desconocida**.
-Solo se usan provisionalmente para el prototipo.
-
-Antes de cualquier publicación pública o uso comercial, deben reemplazarse por:
-- Fotografías propias, o
-- Imágenes con licencia libre (Unsplash, Pexels, etc.)
-
-Consultar `docs/ASSET-SOURCES.md` para el registro completo.
+Sin frameworks CSS · Sin bibliotecas JS · Sin build step · Sin Material Symbols
 
 ---
 

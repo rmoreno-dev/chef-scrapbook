@@ -1,0 +1,172 @@
+/* ============================================================
+   CHEF SCRAPBOOK — RESPONSIVE
+   Depende de: tokens.css, styles.css, components.css
+   Breakpoints: 320 · 480 · 768 · 1024 · 1280 · 1440 px
+   ============================================================ */
+
+/* ── BASE MÓVIL ── */
+
+.sidebar { display: none; }
+
+.mobile-header { display: flex; }
+
+.main-content {
+  padding: var(--margin-mobile);
+  width: 100%;
+}
+
+/* ── 480 px ── */
+
+@media (min-width: 480px) {
+  .home-hero__title {
+    font-size: 32px;
+  }
+}
+
+/* ── ESCRITORIO (≥ 768 px) ── */
+
+@media (min-width: 768px) {
+
+  .mobile-header { display: none; }
+  #nav-overlay   { display: none !important; }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 36px 36px 48px;
+  }
+
+  .home-hero__title {
+    font-size: var(--size-headline-lg);
+  }
+
+  .menus-bottom-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Sidebar abierto en móvil NO aplica en escritorio */
+  .sidebar--open {
+    transform: none !important;
+  }
+}
+
+/* ── 1024 px ── */
+
+@media (min-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 8fr 4fr;
+    gap: var(--space-4);
+  }
+
+  .col-right .paper-scrap {
+    padding: 20px;
+  }
+
+  .recipes-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── 1280 px ── */
+
+@media (min-width: 1280px) {
+  .main-content {
+    padding: 48px 56px 64px;
+  }
+
+  .home-hero {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+}
+
+/* ── GRANDÍSIMAS PANTALLAS (≥ 1440 px) ── */
+
+@media (min-width: 1440px) {
+  .main-content {
+    padding: var(--margin-desktop);
+  }
+}
+
+/* ── ZOOM AL 200% (WCAG 1.4.4) ── */
+
+@media (max-width: 400px) {
+  .sidebar__nav-link {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .planner-table {
+    font-size: 11px;
+  }
+
+  .week-selector {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* ── SIDEBAR MÓVIL (deslizable) ── */
+
+@media (max-width: 767px) {
+  .sticker-excellent {
+    position: static;
+    display: inline-block;
+    margin-top: 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--sidebar-width);
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar--open {
+    transform: translateX(0);
+  }
+}
+
+/* ── REDUCED MOTION ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+
+  .recipe-card--real:hover {
+    transform: none;
+  }
+
+  .menu-highlight-card:not(.menu-highlight-card--soon):hover {
+    transform: none;
+  }
+
+  .toast {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── HIGH CONTRAST ── */
+
+@media (forced-colors: active) {
+  .recipe-card__fav,
+  .category-pill--active,
+  .sidebar__nav-link--active {
+    border: 2px solid ButtonText;
+  }
+}

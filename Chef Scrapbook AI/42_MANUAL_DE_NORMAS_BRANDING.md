@@ -1174,8 +1174,12 @@ La evolución visual puede ampliar patrones, ilustraciones y aplicaciones, pero 
 | Validación de input | IMPLEMENTADO | Sección 16 | — |
 | Skip link | IMPLEMENTADO | Sección 22 | — |
 | aria-live para cambios | IMPLEMENTADO | Sección 22 | — |
+| Iconografía SVG propia (kit oficial) | IMPLEMENTADO — v0.2.0 | Sección 10 | — |
+| Navegación SPA (Inicio/Recetas/Menús) | IMPLEMENTADO — v0.2.0 | Sección 17 | — |
+| Sidebar con sello de marca | IMPLEMENTADO — v0.2.0 | Sección 06 | — |
+| Favicon isotipo SVG | IMPLEMENTADO — v0.2.0 | Sección 28 | — |
+| Textos UI en español oficial | IMPLEMENTADO — v0.2.0 | Sección 30 | — |
 | Logo oficial | NO IMPLEMENTADO | Sección 05 | Alta |
-| Iconografía propia | NO IMPLEMENTADO | Sección 10 | Media |
 | Sistema de colecciones | PLANIFICADO | Sección 19 | Media |
 | Login / Registro | PLANIFICADO | Sección 20-21 | Baja |
 | Diario culinario | PLANIFICADO | Sección 19 | Baja |
@@ -1255,9 +1259,9 @@ Un incidente de marca ocurre cuando se publica algo que viola las normas del man
 | Área | Norma del manual | Estado actual | Diferencia | Acción requerida |
 |---|---|---|---|---|
 | Logo | Logo oficial gato chef (variantes aprobadas) | `chef-avatar.svg` provisional | El logo en código NO es el oficial | Integrar logo oficial — DT-001 |
-| Iconografía | Kit SVG propio 24 × 24 px | Material Symbols Outlined (CDN) | Sistema diferente al especificado | Migración futura — DT-002 |
-| Textos UI | "Chef Scrapbook", "Cocina, crea y disfruta" | "Culinary Journal", "Mi Cocina", "Sweet & Savory" | Textos en inglés provisional | Actualizar antes de publicar — DT-003 |
-| Fuentes | Hosting local recomendado | Google Fonts CDN | CDN externo en lugar de local | Plan de hosting local — DT-004 |
+| Iconografía | Kit SVG propio 24 × 24 px | Kit SVG propio del manual en `assets/icons/` | **CONFORME** desde v0.2.0 | — DT-002 RESUELTO |
+| Textos UI | "Chef Scrapbook", "Cocina, crea y disfruta" | "Chef Scrapbook", "Cocina · Crea · Disfruta" | **CONFORME** desde v0.2.0 | — DT-003 RESUELTO |
+| Fuentes | Hosting local recomendado | Google Fonts CDN | CDN externo en lugar de local | Plan de hosting local — DT-006 |
 | Tokens CSS | Nombres del manual (`--color-cloud`, `--color-mauve`) | Nombres propios (`--color-cloud-gray`, `--color-soft-mauve`) | Nomenclatura diferente | Documentada; alineación futura |
 | Stack JS | Next.js + TypeScript (recomendado) | HTML5 + CSS3 + JS sin transpilación | Stack diferente al del manual | Stack actual es decisión consciente — ver [[33_DECISIONES_TECNICAS]] |
 
