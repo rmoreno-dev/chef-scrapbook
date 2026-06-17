@@ -87,13 +87,13 @@ tags:
 
 **Razon:** Los activos de marca son propietarios. Solo se publican los derivados aprobados.
 
-## ADR-009: Logo oficial pendiente de integracion
+## ADR-009: Logo oficial — RESUELTO en v0.2.1
 
-**Estado:** Decision pendiente
+**Estado:** Aprobado (implementado en v0.2.1, 2026-06-17)
 
-**Contexto:** El logo oficial (gato chef con arco y ramas) esta en `.local-reference`. El codigo actual usa `chef-avatar.svg` como provisional.
+**Contexto:** El logo oficial estaba en `.local-reference`. El codigo usaba activos provisionales.
 
-**Tarea:** Definir que variante se integra en header, favicon y GitHub Pages, y solicitar autorizacion de implementacion.
+**Decision:** Logo horizontal transparente (WebP + PNG fallback) en sidebar via `<picture>`; isotipo transparente en cabecera movil. Paquete `Chef_Scrapbook_Web_Assets_v1.0` integrado como fuente canonica. Ver ADR-019.
 
 ## ADR-010: Arquitectura SPA con hash routing
 
@@ -184,6 +184,35 @@ tags:
 **Decision:** La lista de compras tiene dos secciones: (1) items auto-derivados de `CS.State.getMenuShoppingItems()` (cuenta ocurrencias de cada slug en el plan, escala `shoppingItems.qty × N`), no persistidos en localStorage; (2) items manuales del usuario, persistidos en `shoppingList`. "Limpiar extra" solo borra los manuales.
 
 **Consecuencias:** La seccion del plan siempre refleja el estado actual de las asignaciones. Sin duplicacion de datos en localStorage. Regla documentada en [[12_MODELO_DE_DATOS]].
+
+## ADR-019: Paquete oficial de activos web v1.0
+
+**Estado:** Aprobado (implementado en v0.2.1, 2026-06-17)
+
+**Contexto:** La v0.2.0 usaba activos provisionales (18 iconos planos sin prefijo, 4 SVGs de branding, favicon SVG isotipo). No habia un favicon set completo, ni logos en formato raster, ni CSS de utilidades de marca.
+
+**Decision:** Integrar `Chef_Scrapbook_Web_Assets_v1.0` como paquete canonico de activos web. El paquete provee:
+- Logos en PNG y WebP (horizontal, primario, sello, isotipo) — variantes vanilla y transparente.
+- 32 iconos SVG con prefijo `icon-` en `assets/icons/svg/`.
+- 17 activos decorativos en `assets/decorative/svg/`.
+- 4 patrones en `assets/patterns/svg/`.
+- Favicon set completo en `assets/favicon/`.
+- CSS oficial `css/chef-scrapbook-assets.css` con variables y clases de utilidad.
+- `assets/tokens.json` con tokens de diseno.
+
+**Consecuencias:**
+- Los activos provisionales planos fueron eliminados del repositorio.
+- El patron de fondo del body usa SVG (`pattern-grid.svg`) en lugar de `linear-gradient` CSS.
+- El sello de marca en el hero usa `cs-brand-seal-watermark` (opacidad 0.26, position absolute).
+- Los divs `washi-tape` fueron migrados a la clase `cs-with-tape` en el elemento padre.
+- Los iconos en JS se referencian con path `assets/icons/svg/icon-xxx.svg`.
+- El orden de CSS es: tokens.css → css/chef-scrapbook-assets.css → styles.css → components.css → responsive.css.
+
+**Reglas del paquete (ASSETS_MANIFEST.json):**
+- Logo transparente: solo sobre fondos Vanilla (#FAF5EC) o blanco.
+- Logo horizontal: sidebar/header; sello: solo como watermark o stamp editorial.
+- Activos decorativos: `alt=""` y `aria-hidden="true"`.
+- SVG para decorativos e iconos; WebP/PNG para logos ilustrados.
 
 ## Documentos relacionados
 

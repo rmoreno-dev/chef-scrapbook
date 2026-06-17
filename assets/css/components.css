@@ -411,10 +411,22 @@
 
 .home-hero__deco {
   flex-shrink: 0;
+  position: relative;
+  width: clamp(88px, 9vw, 150px);
+  align-self: center;
 }
 
-.home-hero__stamp {
-  opacity: 0.7;
+/* ── SIDEBAR BRAND LOGO ── */
+
+.sidebar__brand-picture {
+  display: block;
+  width: 100%;
+  max-width: 184px;
+}
+
+.sidebar__brand-logo {
+  width: 100%;
+  height: auto;
 }
 
 /* ── HOME SECTIONS ── */

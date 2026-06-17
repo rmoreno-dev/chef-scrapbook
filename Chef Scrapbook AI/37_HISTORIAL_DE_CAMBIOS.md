@@ -7,8 +7,8 @@ project: "Chef Scrapbook"
 document_type: "historial"
 version: "2.0.0"
 brand_manual_version: "3.1"
-last_updated: "2026-06-16"
-last_verified_against_code: "2026-06-16"
+last_updated: "2026-06-17"
+last_verified_against_code: "2026-06-17"
 source_of_truth: true
 related_documents:
   - "[[00_README_DEL_PROYECTO]]"
@@ -18,6 +18,60 @@ tags:
 ---
 
 # Historial de Cambios
+
+## v0.2.1 — 2026-06-17 (integracion activos web oficiales)
+
+Integracion completa del paquete `Chef_Scrapbook_Web_Assets_v1.0`.
+
+### Activos nuevos
+
+- `assets/branding/png/` y `assets/branding/webp/` — logos horizontal, primario, sello e isotipo en PNG y WebP transparentes.
+- `assets/branding/*.svg` — wrappers SVG de branding.
+- `assets/decorative/svg/` — 17 activos decorativos: botanical-divider, botanical-sprigs, brand-stamp, cookie-illustration, heart, ink-splatter, leaf-placeholder, paperclip, paper-note, scalloped-edge, torn-paper, washi-tape (almond, mauve, sage, default).
+- `assets/decorative/png/` — variantes PNG de los decorativos.
+- `assets/favicon/` — set completo: favicon.ico, favicon-32.png, favicon-16.png, apple-touch-icon.png, site.webmanifest, android-chrome-192.png, android-chrome-512.png.
+- `assets/icons/svg/icon-*.svg` — 32 iconos con prefijo `icon-` en formato oficial.
+- `assets/icons/png/` — variantes PNG de iconos.
+- `assets/patterns/svg/` — 4 patrones: grid, dots, crosses, lines.
+- `assets/tokens.json` — tokens de diseno en formato JSON.
+- `css/chef-scrapbook-assets.css` — CSS oficial del paquete con variables de marca y clases de utilidad.
+
+### Activos eliminados (provisionales)
+
+- `assets/icons/*.svg` (planos, sin prefijo `icon-`) — 18 archivos provisionales eliminados.
+- `assets/branding/botanical-divider.svg`, `botanical-sprigs.svg`, `brand-stamp.svg`, `torn-paper.svg` — 4 activos de branding provisionales eliminados.
+
+### HTML (index.html)
+
+- Favicon set completo sustituye al favicon.svg provisional.
+- `<meta name="theme-color" content="#FAF5EC">` agregado.
+- CSS `css/chef-scrapbook-assets.css` insertado en el orden correcto (despues de tokens.css).
+- Sidebar: logo horizontal oficial en `<picture>` WebP + PNG con clase `cs-brand-logo`.
+- Cabecera movil: isotipo oficial en `<picture>` WebP + PNG.
+- Hamburguesa: sustituido emoji `☰` por `<img src="assets/icons/svg/icon-menu.svg">`.
+- Sello `brand-stamp.svg` del sidebar eliminado (el sello ahora es watermark en el hero).
+
+### CSS (styles.css)
+
+- Body `background-image` cambiado de CSS `linear-gradient` a `url("../patterns/svg/pattern-grid.svg")`.
+
+### CSS (components.css)
+
+- `.home-hero__deco` actualizado con `position: relative` para contener el sello watermark.
+- `.sidebar__brand-picture` y `.sidebar__brand-logo` agregados para el nuevo logo del sidebar.
+
+### JavaScript (home.js, recipes.js, recipe-detail.js, menus.js)
+
+- Todos los paths `assets/icons/xxx.svg` actualizados a `assets/icons/svg/icon-xxx.svg`.
+- Sello en hero de Inicio: de `brand-stamp.svg` a `chef-scrapbook-seal-transparent.webp` con clase `cs-brand-seal-watermark`.
+- Slots "Proximamente": de `assets/icons/leaf.svg` a `assets/decorative/svg/leaf-placeholder.svg` con clase `cs-decoration`.
+- `<div class="washi-tape ...">` eliminados de recipe-detail.js y menus.js; clase `cs-with-tape` / `cs-with-tape--sage` agregada al elemento padre.
+
+### Deuda resuelta
+
+- DT-001: Logo oficial implementado. RESUELTO.
+
+---
 
 ## v0.2.0 — 2026-06-16 (rediseno integral SPA)
 

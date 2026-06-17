@@ -7,8 +7,8 @@ project: "Chef Scrapbook"
 document_type: "arquitectura"
 version: "2.0.0"
 brand_manual_version: "3.1"
-last_updated: "2026-06-16"
-last_verified_against_code: "2026-06-16"
+last_updated: "2026-06-17"
+last_verified_against_code: "2026-06-17"
 source_of_truth: true
 related_documents:
   - "[[05_ARQUITECTURA_GENERAL]]"
@@ -31,6 +31,9 @@ Chef Scrapbook/                         <- Raiz del repositorio
 |-- README.md                           <- Documentacion principal del proyecto
 |-- .gitignore                          <- Exclusiones de Git
 |
+|-- css/
+|   `-- chef-scrapbook-assets.css       <- CSS oficial del paquete de marca v1.0
+|
 |-- assets/
 |   |-- css/
 |   |   |-- tokens.css                  <- Variables CSS: paleta, tipografia, funcionales, transiciones
@@ -51,35 +54,37 @@ Chef Scrapbook/                         <- Raiz del repositorio
 |   |   `-- app.js                      <- Bootstrap: escapeHTML, toast, Calculator, Router.start()
 |   |
 |   |-- images/
-|   |   |-- chef-avatar.svg             <- Ilustracion provisional (no es el logo oficial)
-|   |   |-- chocolate-chip-cookies.svg  <- Ilustracion del batch de galletas
-|   |   `-- favicon.svg                 <- Isotipo cat chef para favicon
+|   |   |-- chef-avatar.svg             <- Ilustracion propia (no es el logo oficial)
+|   |   `-- chocolate-chip-cookies.svg  <- Ilustracion del batch de galletas
 |   |
-|   |-- icons/                          <- Kit SVG del manual de marca (18 iconos)
-|   |   |-- home.svg
-|   |   |-- recipe.svg
-|   |   |-- calendar.svg
-|   |   |-- heart.svg
-|   |   |-- search.svg
-|   |   |-- clock.svg
-|   |   |-- filter.svg
-|   |   |-- check.svg
-|   |   |-- plus.svg
-|   |   |-- leaf.svg
-|   |   |-- sparkle.svg
-|   |   |-- ingredients.svg
-|   |   |-- bowl.svg
-|   |   |-- whisk.svg
-|   |   |-- journal.svg
-|   |   |-- servings.svg
-|   |   |-- scale.svg
-|   |   `-- menu-icon.svg
+|   |-- branding/                       <- Logos y sello oficiales (paquete v1.0)
+|   |   |-- png/                        <- Logo horizontal, primario, sello, isotipo (PNG)
+|   |   |-- webp/                       <- Logo horizontal, primario, sello, isotipo (WebP)
+|   |   `-- *.svg                       <- Wrappers SVG de branding
 |   |
-|   `-- branding/                       <- Activos de branding SVG (4 archivos)
-|       |-- brand-stamp.svg
-|       |-- botanical-divider.svg
-|       |-- botanical-sprigs.svg
-|       `-- torn-paper.svg
+|   |-- decorative/                     <- Activos decorativos (paquete v1.0)
+|   |   |-- svg/                        <- 17 decorativos SVG (botanicos, washi-tape, etc.)
+|   |   `-- png/                        <- Variantes PNG de los decorativos
+|   |
+|   |-- favicon/                        <- Favicon set completo (paquete v1.0)
+|   |   |-- favicon.ico
+|   |   |-- favicon-32.png
+|   |   |-- favicon-16.png
+|   |   |-- apple-touch-icon.png
+|   |   |-- site.webmanifest
+|   |   |-- android-chrome-192.png
+|   |   `-- android-chrome-512.png
+|   |
+|   |-- icons/                          <- Iconos del paquete oficial v1.0
+|   |   |-- svg/                        <- 32 iconos SVG con prefijo icon- (icon-*.svg)
+|   |   `-- png/                        <- Variantes PNG de los iconos
+|   |
+|   |-- patterns/                       <- Patrones de textura (paquete v1.0)
+|   |   |-- svg/                        <- pattern-grid, dots, crosses, lines (SVG)
+|   |   `-- png/                        <- Variantes PNG de los patrones
+|   |
+|   |-- references/                     <- Imagen de referencia de diseno
+|   `-- tokens.json                     <- Tokens de diseno en formato JSON
 |
 |-- docs/
 |   `-- ASSET-SOURCES.md               <- Registro de activos: origen, licencia y estado
@@ -142,7 +147,7 @@ Chef Scrapbook/                         <- Raiz del repositorio
 - Activos de marca: `chef-scrapbook_[activo]_[variante]_[color]_[version].[ext]`.
 - Clases CSS: BEM (`.bloque__elemento--modificador`).
 - IDs de elementos: kebab-case (`main-content`, `nav-toggle`, `toast-container`).
-- Iconos: nombre semantico en singular (`home.svg`, `heart.svg`, `recipe.svg`).
+- Iconos: prefijo `icon-` + nombre semantico en singular en `assets/icons/svg/` (`icon-home.svg`, `icon-heart.svg`, `icon-recipe.svg`).
 
 ## Documentos relacionados
 

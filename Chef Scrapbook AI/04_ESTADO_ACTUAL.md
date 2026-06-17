@@ -7,8 +7,8 @@ project: "Chef Scrapbook"
 document_type: "estado"
 version: "2.0.0"
 brand_manual_version: "3.1"
-last_updated: "2026-06-16"
-last_verified_against_code: "2026-06-16"
+last_updated: "2026-06-17"
+last_verified_against_code: "2026-06-17"
 source_of_truth: true
 related_documents:
   - "[[01_RESUMEN_EJECUTIVO]]"
@@ -23,9 +23,9 @@ tags:
 # Estado Actual del Proyecto
 
 > [!important]
-> Este documento refleja el estado **real del codigo** verificado el 2026-06-16. No refleja visiones ni planes salvo que esten implementados.
+> Este documento refleja el estado **real del codigo** verificado el 2026-06-17. No refleja visiones ni planes salvo que esten implementados.
 
-**Version:** 0.2.0
+**Version:** 0.2.1 — activos web oficiales integrados
 **Arquitectura:** SPA (Single Page Application) con hash routing
 **Archivo principal:** `index.html` (shell estatico — el contenido de cada vista es renderizado por JS)
 
@@ -57,8 +57,10 @@ tags:
 
 | Componente | Descripcion | Estado |
 |---|---|---|
-| Sidebar desktop | 3 items: Inicio, Recetas, Menus con iconos SVG propios | IMPLEMENTADO |
-| Cabecera movil | Logo + boton hamburguesa (aria-expanded, aria-controls) | IMPLEMENTADO |
+| Sidebar desktop | 3 items: Inicio, Recetas, Menus con iconos SVG oficiales (icon-*.svg) | IMPLEMENTADO |
+| Logo oficial horizontal | `<picture>` WebP + PNG en sidebar; clase `cs-brand-logo` | IMPLEMENTADO |
+| Sello de marca (watermark) | `cs-brand-seal-watermark` en hero de Inicio; opacidad 0.26 | IMPLEMENTADO |
+| Cabecera movil | Isotipo PNG/WebP + boton hamburguesa icon-menu.svg | IMPLEMENTADO |
 | Overlay movil | Cierra sidebar al hacer clic fuera | IMPLEMENTADO |
 | Escape key | Cierra sidebar desde cualquier elemento | IMPLEMENTADO |
 | Indicador de ruta activa | aria-current="page" actualizado por el router | IMPLEMENTADO |
@@ -113,12 +115,17 @@ La clave raiz es `chef-scrapbook-v1`. El estado se serializa como JSON con la si
 | Tipo | Archivo / Carpeta | Estado |
 |---|---|---|
 | Tokens CSS | `assets/css/tokens.css` | IMPLEMENTADO |
+| CSS activos oficiales | `css/chef-scrapbook-assets.css` | IMPLEMENTADO |
 | Estilos globales SPA | `assets/css/styles.css` | IMPLEMENTADO |
 | Estilos de componentes | `assets/css/components.css` | IMPLEMENTADO |
 | Estilos responsive | `assets/css/responsive.css` | IMPLEMENTADO |
-| Favicon SVG (isotipo) | `assets/images/favicon.svg` | IMPLEMENTADO |
-| Iconos de navegacion (18 SVG) | `assets/icons/` | IMPLEMENTADO |
-| Activos de branding (4 SVG) | `assets/branding/` | IMPLEMENTADO |
+| Favicon set completo | `assets/favicon/` (ico, 32, 16, apple-touch, manifest) | IMPLEMENTADO |
+| Iconos oficiales (32 SVG) | `assets/icons/svg/icon-*.svg` | IMPLEMENTADO |
+| Iconos PNG | `assets/icons/png/` | IMPLEMENTADO |
+| Branding — logos y sello | `assets/branding/png/`, `assets/branding/webp/`, SVG wrappers | IMPLEMENTADO |
+| Decorativos (17 SVG) | `assets/decorative/svg/` | IMPLEMENTADO |
+| Patrones (4 SVG) | `assets/patterns/svg/` | IMPLEMENTADO |
+| Tokens de diseno | `assets/tokens.json` | IMPLEMENTADO |
 | Registro de activos | `docs/ASSET-SOURCES.md` | IMPLEMENTADO |
 
 ## Identidad implementada vs. pendiente
@@ -130,8 +137,10 @@ La clave raiz es `chef-scrapbook-v1`. El estado se serializa como JSON con la si
 | Iconografia | IMPLEMENTADO — kit SVG propio en assets/icons/ | Conforme |
 | Favicon | IMPLEMENTADO — isotipo cat chef SVG | Conforme |
 | Textos UI | IMPLEMENTADO — "Chef Scrapbook", "Cocina · Crea · Disfruta" | Conforme |
-| Logo oficial | NO IMPLEMENTADO | Logo gato chef en .local-reference — DT-001 |
-| Lenguaje grafico | PARCIALMENTE IMPLEMENTADO | brand-stamp.svg activo; botanicos reservados |
+| Logo oficial | IMPLEMENTADO — horizontal transparent WebP/PNG en sidebar | Conforme |
+| Sello de marca | IMPLEMENTADO — watermark en hero, opacidad 0.26 | Conforme |
+| Favicon set | IMPLEMENTADO — ico, 32, 16, apple-touch, site.webmanifest | Conforme |
+| Lenguaje grafico | IMPLEMENTADO — botanicos, decorativos, washi-tape, patrones | Conforme |
 
 ## Dependencias externas activas
 
@@ -143,7 +152,8 @@ La clave raiz es `chef-scrapbook-v1`. El estado se serializa como JSON con la si
 ## Estado de publicacion
 
 - PLANIFICADO: GitHub Pages en https://rmoreno-dev.github.io/chef-scrapbook/
-- No publicado. Solo accesible localmente en http://localhost via Laragon.
+- No publicado aun. Solo accesible localmente en http://localhost via Laragon.
+- Proximo paso: habilitar GitHub Pages desde branch main / raiz.
 
 ## Documentos relacionados
 

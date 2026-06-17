@@ -54,11 +54,11 @@
               ' aria-label="' + (isFav ? 'Quitar de favoritos' : 'Agregar a favoritos') + '"',
               ' aria-pressed="' + (isFav ? 'true' : 'false') + '"',
               ' data-fav-id="' + recipe.id + '">',
-              '<img src="assets/icons/heart.svg" alt="" width="16" height="16">',
+              '<img src="assets/icons/svg/icon-heart.svg" alt="" width="16" height="16">',
               '<span id="fav-label">' + (isFav ? 'En favoritos' : 'Favorito') + '</span>',
             '</button>',
             '<button class="btn btn--primary" type="button" id="add-to-shopping-btn">',
-              '<img src="assets/icons/plus.svg" alt="" width="16" height="16">',
+              '<img src="assets/icons/svg/icon-plus.svg" alt="" width="16" height="16">',
               'Agregar a lista',
             '</button>',
           '</div>',
@@ -71,10 +71,9 @@
           '<div class="col-left">',
 
             /* Ingredientes */
-            '<section class="paper-scrap" aria-labelledby="heading-ingredientes">',
-              '<div class="washi-tape washi-tape--top-center washi-tape--mauve" aria-hidden="true"></div>',
+            '<section class="paper-scrap cs-with-tape" aria-labelledby="heading-ingredientes">',
               '<h2 class="section-heading" id="heading-ingredientes">',
-                '<img src="assets/icons/ingredients.svg" alt="" width="20" height="20">',
+                '<img src="assets/icons/svg/icon-ingredients.svg" alt="" width="20" height="20">',
                 'Matriz de Ingredientes',
               '</h2>',
               '<div class="table-wrapper">',
@@ -108,10 +107,9 @@
             '</section>',
 
             /* Método */
-            '<section class="paper-scrap paper-scrap--rotate-pos" aria-labelledby="heading-metodo">',
-              '<div class="washi-tape washi-tape--top-right washi-tape--sage" aria-hidden="true"></div>',
+            '<section class="paper-scrap paper-scrap--rotate-pos cs-with-tape cs-with-tape--sage" aria-labelledby="heading-metodo">',
               '<h2 class="section-heading section-heading--muted" id="heading-metodo">',
-                '<img src="assets/icons/whisk.svg" alt="" width="20" height="20">',
+                '<img src="assets/icons/svg/icon-whisk.svg" alt="" width="20" height="20">',
                 'Método',
               '</h2>',
               '<ol class="method-steps" aria-label="Pasos de preparación">',
@@ -133,8 +131,7 @@
           '<div class="col-right">',
 
             /* Factor de Rendimiento + Calculadora */
-            '<div class="paper-scrap paper-scrap--rotate-neg2" aria-labelledby="heading-rendimiento">',
-              '<div class="washi-tape washi-tape--top-left-sm washi-tape--mauve" aria-hidden="true"></div>',
+            '<div class="paper-scrap paper-scrap--rotate-neg2 cs-with-tape" aria-labelledby="heading-rendimiento">',
               '<h3 class="yield-card__title yield-card__title--top-offset" id="heading-rendimiento">Factor de Rendimiento</h3>',
               '<div class="calculator" role="group" aria-labelledby="calc-label">',
                 '<label class="calculator__label" id="calc-label" for="portion-input">Número de porciones</label>',
@@ -172,8 +169,7 @@
             '</figure>',
 
             /* Perfil nutricional */
-            '<div class="paper-scrap paper-scrap--rotate-pos" aria-labelledby="heading-nutricion">',
-              '<div class="washi-tape washi-tape--card-top washi-tape--sage" aria-hidden="true"></div>',
+            '<div class="paper-scrap paper-scrap--rotate-pos cs-with-tape cs-with-tape--sage" aria-labelledby="heading-nutricion">',
               '<h3 class="yield-card__title yield-card__title--top-offset" id="heading-nutricion">Perfil Nutricional</h3>',
               '<p class="nutrition-subtitle">(Por porción de ' + recipe.nutrition.portionSize + 'g)</p>',
               '<ul class="nutrition-list" aria-label="Valores nutricionales por porción">',

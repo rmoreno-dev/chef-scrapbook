@@ -7,11 +7,12 @@ se encuentra con la calidez de un cuaderno artesanal.
 
 ## Estado actual
 
-> **Versión 0.2.0 — SPA con hash routing**
+> **Versión 0.2.1 — Activos web oficiales integrados**
 >
 > Aplicación de página única con 4 vistas (Inicio, Recetas, Detalle de receta, Menús),
 > calculadora de porciones interactiva, favoritos, buscador, planificador semanal
 > y lista de compras. Persistencia en localStorage. Optimizada para escritorio y móvil.
+> Logo oficial, favicon set completo, 32 iconos SVG, 17 decorativos y patrones integrados.
 
 ---
 
@@ -28,7 +29,10 @@ se encuentra con la calidez de un cuaderno artesanal.
 - **Método de preparación** en 3 pasos con estilo notebook
 - **Perfil nutricional** por porción de 50 g
 - **Navegación lateral** (escritorio) y cabecera sticky (móvil)
-- **Kit SVG propio** — iconografía del sistema de diseño Vanilla Ink en `assets/icons/`
+- **Logo oficial** — horizontal transparent en sidebar; isotipo en cabecera móvil
+- **Favicon set completo** — ico, 32×32, 16×16, apple-touch, site.webmanifest
+- **32 iconos SVG oficiales** — `assets/icons/svg/icon-*.svg` del kit de marca
+- **17 activos decorativos** — botánicos, washi-tape, sello, paperclip, patrones
 - **Sistema visual Vanilla Ink** — editorial, botánico, refinado
 - **Totalmente accesible**: etiquetas ARIA, navegación por teclado, `aria-live`, foco visible, `prefers-reduced-motion`
 - **Responsive** desde 320 px hasta escritorio wide
@@ -41,6 +45,8 @@ se encuentra con la calidez de un cuaderno artesanal.
 ```
 /
 ├── index.html                      # Shell SPA — estructura fija; contenido renderizado por JS
+├── css/
+│   └── chef-scrapbook-assets.css   # CSS oficial del paquete de marca v1.0
 ├── assets/
 │   ├── css/
 │   │   ├── tokens.css              # Variables CSS del sistema Vanilla Ink
@@ -58,12 +64,17 @@ se encuentra con la calidez de un cuaderno artesanal.
 │   │   │   ├── recipe-detail.js    # Vista Detalle de receta + calculadora
 │   │   │   └── menus.js            # Vista Menús (planner + lista de compras)
 │   │   └── app.js                  # Bootstrap: namespace ChefScrapbook, toast, init
-│   ├── icons/                      # Kit SVG de iconografía propia (18 iconos)
-│   ├── branding/                   # SVGs de identidad provisional (chef-avatar, etc.)
-│   └── images/
-│       └── favicon.svg             # Favicon SVG
+│   ├── branding/                   # Logos y sello oficiales (PNG, WebP, SVG wrappers)
+│   ├── decorative/                 # Activos decorativos: botánicos, washi-tape, etc.
+│   ├── favicon/                    # Favicon set completo (ico, 32, 16, apple-touch, manifest)
+│   ├── icons/
+│   │   └── svg/                    # 32 iconos SVG oficiales con prefijo icon-
+│   ├── patterns/
+│   │   └── svg/                    # 4 patrones SVG (grid, dots, crosses, lines)
+│   ├── images/                     # Ilustraciones propias (chef-avatar, galletas)
+│   └── tokens.json                 # Tokens de diseño en formato JSON
 ├── docs/
-│   └── ASSET-SOURCES.md            # Registro de activos externos y licencias
+│   └── ASSET-SOURCES.md            # Registro de activos y licencias
 ├── Chef Scrapbook AI/              # Vault de documentación (44 documentos Obsidian)
 ├── .github/
 │   ├── copilot-instructions.md     # Instrucciones permanentes para Copilot

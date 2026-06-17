@@ -5,158 +5,197 @@ y registro histórico de activos eliminados.
 
 ---
 
-## Ilustraciones propias (SVG locales)
+## Paquete oficial de activos web — Chef_Scrapbook_Web_Assets_v1.0
 
-Activos vectoriales creados específicamente para Chef Scrapbook. Sin dependencias externas.
-Aptos para publicación.
+Fuente canónica de todos los activos visuales del sitio, integrado en v0.2.1 (2026-06-17).
+Origen: paquete aprobado generado a partir del Manual Profesional Chef Scrapbook v3.1 (Concepto 01).
 
-### A. Avatar de perfil
+### Branding — Logos y sello
 
-| Campo                    | Detalle |
-|--------------------------|---------|
-| **Archivo**              | `assets/images/chef-avatar.svg` |
-| **Propósito**            | Avatar circular del sidebar — identidad visual del perfil |
-| **Origen**               | Creado específicamente para Chef Scrapbook |
-| **Autoría**              | Proyecto Chef Scrapbook |
-| **Dependencia externa**  | Ninguna |
-| **Licencia**             | Propietaria — mismo titular que el proyecto |
-| **Paleta**               | Sistema Vanilla Ink (#FAF5EC, #E4D5C3, #C8B49F, #A68E98, #A8B0BA, #253245) |
-| **Aptitud publicación**  | Apto ✓ |
+| Archivo                                          | Uso en el proyecto                         |
+|--------------------------------------------------|--------------------------------------------|
+| `assets/branding/webp/chef-scrapbook-logo-horizontal-transparent.webp` | Logo sidebar (fuente WebP) |
+| `assets/branding/png/chef-scrapbook-logo-horizontal-transparent.png`   | Logo sidebar (fallback PNG) |
+| `assets/branding/webp/chef-scrapbook-icon-transparent.webp`            | Isotipo cabecera móvil (fuente WebP) |
+| `assets/branding/png/chef-scrapbook-icon-transparent.png`              | Isotipo cabecera móvil (fallback PNG) |
+| `assets/branding/webp/chef-scrapbook-seal-transparent.webp`            | Watermark hero de Inicio |
+| `assets/branding/png/chef-scrapbook-seal-transparent.png`              | Watermark hero (fallback PNG) |
+| `assets/branding/*.svg`                          | Wrappers SVG de referencia (no usados en HTML directamente) |
+| Variantes vanilla (PNG)                          | Solo para uso editorial sobre fondos blancos |
 
-### B. Ilustración de galletas
-
-| Campo                    | Detalle |
-|--------------------------|---------|
-| **Archivo**              | `assets/images/chocolate-chip-cookies.svg` |
-| **Propósito**            | Imagen polaroid de la columna derecha — ilustra el batch de galletas |
-| **Origen**               | Creado específicamente para Chef Scrapbook |
-| **Autoría**              | Proyecto Chef Scrapbook |
-| **Dependencia externa**  | Ninguna |
-| **Licencia**             | Propietaria — mismo titular que el proyecto |
-| **Paleta**               | Sistema Vanilla Ink (#FAF5EC, #E4D5C3, #C8B49F, #A8B0BA, #253245) |
-| **Aptitud publicación**  | Apto ✓ |
-
----
-
-## Imágenes externas eliminadas (registro histórico)
-
-Las siguientes imágenes fueron utilizadas provisionalmente durante el desarrollo local
-y eliminadas antes de cualquier publicación pública. **Nunca se publicaron.**
-Se conserva el registro con fines de trazabilidad.
-
-### 1. Foto de perfil — Chef portrait *(REEMPLAZADA)*
-
-| Campo             | Detalle |
-|-------------------|---------|
-| **Tipo**          | Imagen rasterizada (JPEG) — URL externa |
-| **URL original**  | `https://lh3.googleusercontent.com/aida-public/AB6AXuAflpxF4kQ...` |
-| **Utilizada en**  | `index.html` → sidebar, avatar del perfil |
-| **Licencia**      | Desconocida — imagen generada por Google AI Studio (AIDA public) |
-| **Estado**        | **REEMPLAZADA** — eliminada de todos los archivos activos del proyecto |
-| **No publicada**  | La URL nunca estuvo presente en ningún commit ni despliegue público |
-| **Sustituida por** | `assets/images/chef-avatar.svg` |
-
-### 2. Foto de galletas — Cookie batch *(REEMPLAZADA)*
-
-| Campo             | Detalle |
-|-------------------|---------|
-| **Tipo**          | Imagen rasterizada (JPEG) — URL externa |
-| **URL original**  | `https://lh3.googleusercontent.com/aida-public/AB6AXuAHjPEOS0L...` |
-| **Utilizada en**  | `index.html` → sección polaroid (columna derecha) |
-| **Licencia**      | Desconocida — imagen generada por Google AI Studio (AIDA public) |
-| **Estado**        | **REEMPLAZADA** — eliminada de todos los archivos activos del proyecto |
-| **No publicada**  | La URL nunca estuvo presente en ningún commit ni despliegue público |
-| **Sustituida por** | `assets/images/chocolate-chip-cookies.svg` |
-
----
-
-## Tipografías (Google Fonts — SIL Open Font License)
-
-Todas las fuentes se cargan desde Google Fonts CDN y están disponibles bajo la
-**SIL Open Font License 1.1**, que permite uso en proyectos comerciales y personales.
-
-| Fuente          | Uso en el proyecto                          | URL |
-|-----------------|---------------------------------------------|-----|
-| **Prata**       | Títulos editoriales y encabezados           | https://fonts.google.com/specimen/Prata |
-| **Mulish**      | Cuerpo de texto, tablas, formularios, UI    | https://fonts.google.com/specimen/Mulish |
-| **Great Vibes** | Captions decorativos y acentos manuscritos  | https://fonts.google.com/specimen/Great+Vibes |
-
----
-
-## Iconos — Material Symbols Outlined (Google) *(ELIMINADO en v0.2.0)*
-
-| Campo             | Detalle |
-|-------------------|---------|
-| **Proveedor**     | Google Fonts / Material Design |
-| **Licencia**      | Apache License 2.0 |
-| **URL**           | `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...` |
-| **Íconos usados** | `account_circle`, `dashboard`, `science`, `biotech`, `bar_chart`, `list_alt`, `play_arrow` |
-| **Estado**        | **ELIMINADO** — reemplazado por el kit SVG propio de marca en v0.2.0. Sin referencias activas en el proyecto. |
-
----
-
----
-
-## Íconos del kit de marca (SVG propios — Vanilla Ink)
-
-Íconos vectoriales del sistema de marca oficial. Copiados de `.local-reference/brand-manual-v3.1/assets/svg/` a `assets/icons/`. Nunca deben referenciar URLs externas.
-
-| Archivo              | Propósito en el proyecto                     |
-|----------------------|----------------------------------------------|
-| `home.svg`           | Ítem de navegación — Inicio                  |
-| `recipe.svg`         | Ítem de navegación — Recetas                 |
-| `calendar.svg`       | Ítem de navegación — Menús; cards de menú    |
-| `heart.svg`          | Botón de favorito en tarjetas de receta      |
-| `search.svg`         | Barra de búsqueda de recetas                 |
-| `clock.svg`          | Meta-dato de tiempo en tarjetas              |
-| `filter.svg`         | Filtro avanzado (reservado)                  |
-| `check.svg`          | Título sección "Cocina del Domingo"          |
-| `plus.svg`           | Botones de agregar en listas                 |
-| `leaf.svg`           | Tarjetas "próximamente"                      |
-| `sparkle.svg`        | Sección "Novedades" en home                  |
-| `ingredients.svg`    | Encabezado tabla ingredientes; lista compras |
-| `bowl.svg`           | Reservado para futuras vistas                |
-| `whisk.svg`          | Encabezado sección Método                    |
-| `journal.svg`        | Card menús guardados                         |
-| `servings.svg`       | Meta-dato de porciones en tarjetas           |
-| `scale.svg`          | Card novedades — calculadora de porciones    |
-| `menu-icon.svg`      | Reservado para menú contextual               |
-
-**Aptitud publicación:** Apto ✓ (sin referencias externas)
-
----
-
-## Activos de branding (SVG propios)
-
-Copiados de `.local-reference/brand-manual-v3.1/assets/svg/` a `assets/branding/`.
-
-| Archivo                  | Propósito en el proyecto                   |
-|--------------------------|--------------------------------------------|
-| `brand-stamp.svg`        | Sello circular del sidebar y hero de Inicio |
-| `botanical-divider.svg`  | Divisores decorativos (reservado)          |
-| `botanical-sprigs.svg`   | Decoración editorial (reservado)           |
-| `torn-paper.svg`         | Efecto borde rasgado (reservado)           |
+**Reglas de uso:**
+- Transparente: solo sobre fondos `#FAF5EC` (Vainilla) o blanco.
+- Horizontal: sidebar y header; sello: solo como watermark o stamp editorial.
+- Sello en el código: clase `cs-brand-seal-watermark`, opacidad 0.26, `pointer-events:none`, `aria-hidden="true"`.
 
 **Aptitud publicación:** Apto ✓
 
 ---
 
-## Favicon
+### Iconos oficiales
 
-| Campo                   | Detalle |
-|-------------------------|---------|
-| **Archivo**             | `assets/images/favicon.svg` |
-| **Propósito**           | Favicon SVG del sitio — isotipo cat chef |
-| **Origen**              | Creado para Chef Scrapbook basado en el concepto de marca aprobado (`favicon_256.png` en `.local-reference`) |
-| **Aptitud publicación** | Apto ✓ |
+| Directorio               | Contenido                                       |
+|--------------------------|-------------------------------------------------|
+| `assets/icons/svg/`      | 32 iconos SVG con prefijo `icon-` (24×24 px)   |
+| `assets/icons/png/`      | Variantes PNG de referencia                     |
+
+Iconos disponibles: `icon-book`, `icon-bowl`, `icon-calendar`, `icon-camera`, `icon-check`,
+`icon-chefhat`, `icon-clock`, `icon-collection`, `icon-download`, `icon-edit`, `icon-filter`,
+`icon-heart`, `icon-home`, `icon-info`, `icon-ingredients`, `icon-journal`, `icon-leaf`,
+`icon-menu`, `icon-plus`, `icon-portion`, `icon-print`, `icon-recipe`, `icon-scale`,
+`icon-search`, `icon-servings`, `icon-share`, `icon-sparkle`, `icon-star`, `icon-tag`,
+`icon-trash`, `icon-warning`, `icon-whisk`.
+
+**Aptitud publicación:** Apto ✓ (sin referencias externas)
+
+---
+
+### Activos decorativos
+
+| Directorio                 | Contenido                                        |
+|----------------------------|--------------------------------------------------|
+| `assets/decorative/svg/`   | 17 SVG decorativos                               |
+| `assets/decorative/png/`   | Variantes PNG de referencia                      |
+
+Archivos: `botanical-divider.svg`, `botanical-sprig-left.svg`, `botanical-sprig-right.svg`,
+`botanical-sprigs.svg`, `brand-stamp.svg`, `cookie-illustration.svg`, `heart.svg`,
+`ink-splatter.svg`, `leaf-placeholder.svg`, `paper-note.svg`, `paperclip.svg`,
+`scalloped-edge.svg`, `torn-paper.svg`, `washi-tape-almond.svg`, `washi-tape-mauve.svg`,
+`washi-tape-sage.svg`, `washi-tape.svg`.
+
+**Reglas de uso:** `alt=""` y `aria-hidden="true"` en todos los decorativos.
+
+**Aptitud publicación:** Apto ✓
+
+---
+
+### Patrones
+
+| Directorio              | Contenido                                          |
+|-------------------------|----------------------------------------------------|
+| `assets/patterns/svg/`  | `pattern-grid.svg`, `pattern-dots.svg`, `pattern-crosses.svg`, `pattern-lines.svg` |
+| `assets/patterns/png/`  | Variantes PNG de referencia                        |
+
+El patrón `pattern-grid.svg` se aplica como `background-image` en el `body` (24×24 px tile).
+
+**Aptitud publicación:** Apto ✓
+
+---
+
+### Favicon set
+
+| Archivo                                  | Propósito                             |
+|------------------------------------------|---------------------------------------|
+| `assets/favicon/favicon.ico`             | Favicon universal (multi-size ICO)    |
+| `assets/favicon/favicon-32.png`          | Favicon 32×32 px                      |
+| `assets/favicon/favicon-16.png`          | Favicon 16×16 px                      |
+| `assets/favicon/apple-touch-icon.png`    | Icono iOS home screen 180×180 px      |
+| `assets/favicon/site.webmanifest`        | Web App Manifest (Android/PWA)        |
+| `assets/favicon/android-chrome-192.png`  | Icono Android Chrome 192×192 px       |
+| `assets/favicon/android-chrome-512.png`  | Icono Android Chrome 512×512 px       |
+
+**Aptitud publicación:** Apto ✓
+
+---
+
+### CSS oficial y tokens
+
+| Archivo                          | Propósito                                              |
+|----------------------------------|--------------------------------------------------------|
+| `css/chef-scrapbook-assets.css`  | CSS oficial: variables de marca + clases de utilidad   |
+| `assets/tokens.json`             | Tokens de diseño en formato JSON                       |
+
+Clases de utilidad: `.cs-page-texture`, `.cs-brand-logo`, `.cs-brand-seal-watermark`,
+`.cs-paper-card`, `.cs-with-tape`, `.cs-with-tape--sage`, `.cs-botanical-left`,
+`.cs-botanical-right`, `.cs-placeholder`, `.cs-quote-note`, `.cs-decoration`.
+
+**Aptitud publicación:** Apto ✓
+
+---
+
+## Ilustraciones propias (SVG locales)
+
+Activos vectoriales creados específicamente para Chef Scrapbook. Sin dependencias externas.
+
+| Campo                   | Archivo                                     |
+|-------------------------|---------------------------------------------|
+| Avatar de perfil        | `assets/images/chef-avatar.svg`             |
+| Ilustración de galletas | `assets/images/chocolate-chip-cookies.svg`  |
+
+**Aptitud publicación:** Apto ✓
+
+---
+
+## Tipografías (Google Fonts — SIL Open Font License)
+
+Cargadas desde Google Fonts CDN. Disponibles bajo **SIL Open Font License 1.1**.
+
+| Fuente          | Uso en el proyecto                          |
+|-----------------|---------------------------------------------|
+| **Prata**       | Títulos editoriales y encabezados           |
+| **Mulish**      | Cuerpo de texto, tablas, formularios, UI    |
+| **Great Vibes** | Captions decorativos y acentos manuscritos  |
+
+---
+
+## Registro histórico de activos eliminados
+
+### Íconos provisionales planos — ELIMINADOS en v0.2.1
+
+18 archivos SVG en `assets/icons/` (sin prefijo, sin subdirectorio): `bowl.svg`, `calendar.svg`,
+`check.svg`, `clock.svg`, `filter.svg`, `heart.svg`, `home.svg`, `ingredients.svg`, `journal.svg`,
+`leaf.svg`, `menu-icon.svg`, `plus.svg`, `recipe.svg`, `scale.svg`, `search.svg`, `servings.svg`,
+`sparkle.svg`, `whisk.svg`.
+
+**Estado:** ELIMINADOS — sustituidos por `assets/icons/svg/icon-*.svg` del paquete oficial v1.0.
+
+---
+
+### Branding provisional — ELIMINADO en v0.2.1
+
+4 archivos SVG en `assets/branding/`: `botanical-divider.svg`, `botanical-sprigs.svg`,
+`brand-stamp.svg`, `torn-paper.svg`.
+
+**Estado:** ELIMINADOS — sustituidos por los activos del directorio `assets/decorative/` del paquete oficial v1.0.
+
+---
+
+### Favicon SVG provisional — HISTORIAL
+
+| Campo             | Detalle |
+|-------------------|---------|
+| **Archivo**       | `assets/images/favicon.svg` (eliminado de `<head>`) |
+| **Estado**        | Sustituido por el favicon set completo en `assets/favicon/` |
+
+---
+
+### Material Symbols Outlined (Google) — ELIMINADO en v0.2.0
+
+| Campo             | Detalle |
+|-------------------|---------|
+| **Proveedor**     | Google Fonts / Material Design |
+| **Licencia**      | Apache License 2.0 |
+| **Estado**        | **ELIMINADO** — reemplazado por el kit SVG oficial en v0.2.0 / v0.2.1 |
+
+---
+
+### Imágenes externas — NUNCA PUBLICADAS (v0.1.0)
+
+Las siguientes imágenes de Google AI Studio se usaron provisionalmente en desarrollo local
+y se eliminaron antes de cualquier commit público.
+
+| Uso                | URL original (parcial)                                      |
+|--------------------|-------------------------------------------------------------|
+| Foto de perfil     | `https://lh3.googleusercontent.com/aida-public/AB6AXuAflpx...` |
+| Foto de galletas   | `https://lh3.googleusercontent.com/aida-public/AB6AXuAHjPE...` |
+
+**Estado:** REEMPLAZADAS — `chef-avatar.svg` y `chocolate-chip-cookies.svg` respectivamente.
+**No publicadas:** Las URLs nunca estuvieron presentes en ningún commit público.
 
 ---
 
 ## Notas generales
 
-- Las URLs de `lh3.googleusercontent.com` fueron eliminadas del proyecto antes de cualquier
-  publicación. No existe ninguna referencia activa a ese dominio en los archivos del proyecto.
-- Los dominios de Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) requieren
-  conexión a internet para cargarse. Para uso offline, descargar las fuentes y
-  alojarlas localmente en `assets/fonts/`.
-- Los SVG propios no contienen scripts, imágenes embebidas, URLs remotas ni datos base64.
+- Los dominios de Google Fonts requieren conexión a internet. Para uso offline, descargar y alojar en `assets/fonts/`.
+- Los SVG propios y del paquete oficial no contienen scripts, URLs remotas ni datos base64.
+- El paquete `Chef_Scrapbook_Web_Assets_v1.0` está en `C:\Users\Usuario\Downloads\` (local, no versionado).

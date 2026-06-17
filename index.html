@@ -6,9 +6,14 @@
   <title>Chef Scrapbook — Inicio</title>
   <meta name="description" content="Chef Scrapbook: tu cuaderno de fórmulas culinarias. Recetas, calculadora de porciones y planificador de menú semanal." />
   <meta name="author" content="Rodolfo Moreno" />
+  <meta name="theme-color" content="#FAF5EC" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <!-- Favicon oficial -->
+  <link rel="icon" href="assets/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
 
   <!-- Google Fonts: Sistema Vanilla Ink -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,8 +23,9 @@
     rel="stylesheet"
   />
 
-  <!-- Estilos -->
+  <!-- Estilos: tokens → activos oficiales → app → componentes → responsive -->
   <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="css/chef-scrapbook-assets.css" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
   <link rel="stylesheet" href="assets/css/responsive.css" />
@@ -50,7 +56,10 @@
   ══════════════════════════════════════ -->
   <header class="mobile-header" role="banner">
     <a class="mobile-header__brand" href="#/inicio" aria-label="Chef Scrapbook — Inicio">
-      <img src="assets/images/favicon.svg" alt="" width="28" height="28" />
+      <picture>
+        <source srcset="assets/branding/webp/chef-scrapbook-icon-transparent.webp" type="image/webp">
+        <img src="assets/branding/png/chef-scrapbook-icon-transparent.png" alt="" width="28" height="28">
+      </picture>
       Chef Scrapbook
     </a>
     <button
@@ -61,7 +70,7 @@
       aria-expanded="false"
       aria-controls="sidebar"
     >
-      ☰
+      <img src="assets/icons/svg/icon-menu.svg" alt="" width="22" height="22" aria-hidden="true">
     </button>
   </header>
 
@@ -73,18 +82,19 @@
     <nav class="sidebar" id="sidebar" aria-label="Navegación principal">
 
       <div class="sidebar__brand">
-        <div class="sidebar__logo">
+        <picture class="sidebar__brand-picture">
+          <source
+            srcset="assets/branding/webp/chef-scrapbook-logo-horizontal-transparent.webp"
+            type="image/webp"
+          >
           <img
-            src="assets/images/favicon.svg"
-            alt=""
-            width="48"
-            height="48"
-          />
-        </div>
-        <div>
-          <p class="sidebar__name">Chef Scrapbook</p>
-          <p class="sidebar__tagline">Cocina · Crea · Disfruta</p>
-        </div>
+            src="assets/branding/png/chef-scrapbook-logo-horizontal-transparent.png"
+            class="cs-brand-logo sidebar__brand-logo"
+            alt="Chef Scrapbook — Cocina, crea y disfruta"
+            width="360"
+            height="180"
+          >
+        </picture>
       </div>
 
       <div class="sidebar__nav">
@@ -95,7 +105,7 @@
               href="#/inicio"
               data-route="/inicio"
             >
-              <img class="sidebar__icon" src="assets/icons/home.svg" alt="" width="20" height="20" />
+              <img class="sidebar__icon" src="assets/icons/svg/icon-home.svg" alt="" width="20" height="20" />
               Inicio
             </a>
           </li>
@@ -105,7 +115,7 @@
               href="#/recetas"
               data-route="/recetas"
             >
-              <img class="sidebar__icon" src="assets/icons/recipe.svg" alt="" width="20" height="20" />
+              <img class="sidebar__icon" src="assets/icons/svg/icon-recipe.svg" alt="" width="20" height="20" />
               Recetas
             </a>
           </li>
@@ -115,7 +125,7 @@
               href="#/menus"
               data-route="/menus"
             >
-              <img class="sidebar__icon" src="assets/icons/calendar.svg" alt="" width="20" height="20" />
+              <img class="sidebar__icon" src="assets/icons/svg/icon-calendar.svg" alt="" width="20" height="20" />
               Menús
             </a>
           </li>
@@ -123,7 +133,7 @@
       </div>
 
       <div class="sidebar__stamp" aria-hidden="true">
-        <img src="assets/branding/brand-stamp.svg" alt="" width="80" height="80" />
+        <img src="assets/decorative/svg/brand-stamp.svg" alt="" width="80" height="80" />
       </div>
 
     </nav>

@@ -77,7 +77,7 @@
         '<div class="search-bar-wrap">',
           '<label class="sr-only" for="recipe-search">Buscar recetas</label>',
           '<div class="search-bar">',
-            '<img src="assets/icons/search.svg" alt="" width="18" height="18" class="search-bar__icon">',
+            '<img src="assets/icons/svg/icon-search.svg" alt="" width="18" height="18" class="search-bar__icon">',
             '<input',
               ' type="search"',
               ' id="recipe-search"',
@@ -131,7 +131,7 @@
         : 'Sin recetas en esta categoría';
       return [
         '<div class="recipes-empty">',
-          '<img src="assets/icons/search.svg" alt="" width="40" height="40">',
+          '<img src="assets/icons/svg/icon-search.svg" alt="" width="40" height="40">',
           '<p>' + emptyMsg + '</p>',
           '<button class="btn btn--ghost btn--sm" id="clear-search" type="button">Ver todas</button>',
         '</div>'
@@ -160,11 +160,11 @@
               '<p class="recipe-card__desc">' + recipe.description + '</p>',
               '<div class="recipe-card__meta">',
                 '<span class="recipe-card__meta-item">',
-                  '<img src="assets/icons/clock.svg" alt="Tiempo" width="13" height="13">',
+                  '<img src="assets/icons/svg/icon-clock.svg" alt="Tiempo" width="13" height="13">',
                   recipe.totalTime + ' min',
                 '</span>',
                 '<span class="recipe-card__meta-item">',
-                  '<img src="assets/icons/servings.svg" alt="Porciones" width="13" height="13">',
+                  '<img src="assets/icons/svg/icon-servings.svg" alt="Porciones" width="13" height="13">',
                   recipe.basePorciones + ' uds',
                 '</span>',
               '</div>',
@@ -175,7 +175,7 @@
             ' data-fav-id="' + recipe.id + '"',
             ' aria-label="' + (isFav ? 'Quitar de favoritos' : 'Agregar a favoritos') + '"',
             ' aria-pressed="' + (isFav ? 'true' : 'false') + '">',
-            '<img src="assets/icons/heart.svg" alt="" width="16" height="16">',
+            '<img src="assets/icons/svg/icon-heart.svg" alt="" width="16" height="16">',
           '</button>',
         '</article>',
       '</li>'
