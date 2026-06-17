@@ -114,20 +114,15 @@ Luego visitar: `http://localhost:8080`
 
 ---
 
-## Publicación en GitHub Pages
+## Sitio publicado
 
-El proyecto está diseñado para publicarse como **GitHub Project Page** sin
-configuración adicional. Todos los recursos utilizan rutas relativas compatibles
-con la URL base:
+**URL pública:** [https://rmoreno-dev.github.io/chef-scrapbook/](https://rmoreno-dev.github.io/chef-scrapbook/)
 
-```
-https://rmoreno-dev.github.io/chef-scrapbook/
-```
+Publicado en **GitHub Pages** desde `main / root`. Se actualiza automáticamente
+en cada push autorizado a `main`. Todos los recursos utilizan rutas relativas
+compatibles con el subdirectorio `/chef-scrapbook/`.
 
-Para publicar (cuando esté autorizado):
-1. Crear repositorio en GitHub como `chef-scrapbook`
-2. Activar GitHub Pages desde `Settings → Pages → Branch: main / root`
-3. La página quedará disponible en la URL indicada arriba
+Primer despliegue verificado: 2026-06-17 — commit `2bb215b` (feat: integrate official Chef Scrapbook web assets). 14/14 activos HTTP 200.
 
 ---
 

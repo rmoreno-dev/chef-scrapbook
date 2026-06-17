@@ -151,9 +151,13 @@ La clave raiz es `chef-scrapbook-v1`. El estado se serializa como JSON con la si
 
 ## Estado de publicacion
 
-- PLANIFICADO: GitHub Pages en https://rmoreno-dev.github.io/chef-scrapbook/
-- No publicado aun. Solo accesible localmente en http://localhost via Laragon.
-- Proximo paso: habilitar GitHub Pages desde branch main / raiz.
+- **PUBLICADO** en GitHub Pages: https://rmoreno-dev.github.io/chef-scrapbook/
+- Fuente: branch main / root (deploy automatico en cada push).
+- SHA desplegado: `2bb215bdba12f39361cdb989ba7591a1df9ade29` (feat: integrate official Chef Scrapbook web assets).
+- Fecha de publicacion: 2026-06-17.
+- Smoke test remoto: 14/14 activos HTTP 200. 28/28 checks de contenido HTML. 4/4 JS sin paths provisionales.
+- Consola: sin errores conocidos propios. Sin 404.
+- Accesible tambien localmente en http://localhost via Laragon.
 
 ## Documentos relacionados
 

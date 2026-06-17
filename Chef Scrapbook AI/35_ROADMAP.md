@@ -7,8 +7,8 @@ project: "Chef Scrapbook"
 document_type: "planificacion"
 version: "2.0.0"
 brand_manual_version: "3.1"
-last_updated: "2026-06-16"
-last_verified_against_code: "2026-06-16"
+last_updated: "2026-06-17"
+last_verified_against_code: "2026-06-17"
 source_of_truth: false
 related_documents:
   - "[[00_README_DEL_PROYECTO]]"
@@ -29,18 +29,23 @@ tags:
 - Prompt maestro y comando `/chef.scrapbook`.
 - Inventario del paquete de marca.
 
-## Fase 2 — Integracion oficial de marca (PARCIALMENTE COMPLETADA)
+## Fase 2 — Integracion oficial de marca (COMPLETADA en v0.2.1)
 
 - [x] Migrar textos placeholder ("Culinary Journal" etc.) a nombres oficiales. — COMPLETADO en v0.2.0
-- [x] Migrar iconografia a kit SVG oficial del manual. — COMPLETADO en v0.2.0
-- [x] Favicon SVG con el isotipo cat chef. — COMPLETADO en v0.2.0
-- [ ] Integrar logo oficial del gato chef en header y favicon. — PENDIENTE (DT-001)
+- [x] Migrar iconografia a kit SVG oficial del manual. — COMPLETADO en v0.2.0 / v0.2.1
+- [x] Favicon set completo (ico, 32, 16, apple-touch, manifest). — COMPLETADO en v0.2.1
+- [x] Integrar logo oficial horizontal en sidebar. — COMPLETADO en v0.2.1 (ADR-019)
+- [x] Integrar sello oficial como watermark en hero. — COMPLETADO en v0.2.1
+- [x] Integrar isotipo oficial en cabecera movil. — COMPLETADO en v0.2.1
+- [x] Paquete CSS oficial `chef-scrapbook-assets.css`. — COMPLETADO en v0.2.1
+- [x] Activos decorativos y patrones del paquete oficial. — COMPLETADO en v0.2.1
 
-## Fase 3 — Publicacion GitHub Pages (PENDIENTE)
+## Fase 3 — Publicacion GitHub Pages (COMPLETADA en v0.2.1)
 
-- Crear repositorio en GitHub (puede ya existir como privado).
-- Activar GitHub Pages desde main.
-- Verificar rutas relativas y compatibilidad con la URL base.
+- [x] Repositorio GitHub publico: https://github.com/rmoreno-dev/chef-scrapbook
+- [x] GitHub Pages activo desde main / root. — COMPLETADO 2026-06-17
+- [x] URL publica: https://rmoreno-dev.github.io/chef-scrapbook/
+- [x] Verificacion de rutas relativas y activos remotos. — 14/14 HTTP 200
 
 ## Fase 4 — SPA y experiencia de usuario (COMPLETADA en v0.2.0)
 

@@ -71,6 +71,16 @@ Integracion completa del paquete `Chef_Scrapbook_Web_Assets_v1.0`.
 
 - DT-001: Logo oficial implementado. RESUELTO.
 
+### Despliegue GitHub Pages (2026-06-17)
+
+- GitHub Pages habilitado manualmente en el repositorio: Source → Branch main / root.
+- URL publica activa: https://rmoreno-dev.github.io/chef-scrapbook/
+- SHA verificado en produccion: `2bb215bdba12f39361cdb989ba7591a1df9ade29`
+- Verificacion de activos: 14/14 HTTP 200 (index.html, CSS, logos WebP/PNG, sello, patron SVG, iconos, favicon, manifest).
+- Smoke test remoto: 28/28 checks HTML superados. 4/4 archivos JS sin paths provisionales.
+- Sin errores de consola propios. Sin peticiones 404.
+- Tarea T-004 COMPLETADA.
+
 ---
 
 ## v0.2.0 — 2026-06-16 (rediseno integral SPA)
